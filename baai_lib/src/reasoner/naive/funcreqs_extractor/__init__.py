@@ -1,0 +1,1 @@
+from .FuncRequirementsExtractor import FuncRequirementsExtractor, FuncRequirementsExtractorConfig

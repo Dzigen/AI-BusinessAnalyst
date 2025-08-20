@@ -1,0 +1,1 @@
+from .suite import CNONFG_SUITE_V1

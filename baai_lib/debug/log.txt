@@ -1,0 +1,790 @@
+BAResponse(ba_text='Привет! Я ваш AI Бизнес Аналитик.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Давайте начнём формировать техническое задание.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Сейчас я задам вам несколько общих вопросов, чтобы лучше понять задачу.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Опишите вашу задачу простыми словами.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='Необходимо разработать чат-бота и веб-сервис, которые помогут заказчику формулировать корректное техническое задание (ТЗ) для создания цифрового продукта. Решение должно работать на основе GigaChat и собственной low-code платформы партнёра. Цель – автоматизация процесса уточнения требований, сокращение недопонимания между заказчиком и разработчиком, улучшение качества подготовки ТЗ.', signal=None)
+BAResponse(ba_text='Какую проблему вы хотите решить с помощью продукта?', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='Работающий прототип чат-бота и веб-сервиса с функциями:  1. Ведение диалога → уточнение требований → формирование ТЗ. 2. Возможность редактирования ТЗ в диалоге и в облачном документе. 3. Экспорт ТЗ (PDF, DOCX).', signal=None)
+BAResponse(ba_text='Какой результат вы ожидаете? (Что должно быть на выходе?)', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='Чат-бот и веб-сервис, которые помогут заказчику формулировать корректное техническое задание (ТЗ) для создания цифрового продукта.', signal=None)
+BAResponse(ba_text='Кто будет пользоваться продуктом? (Целевая аудитория)', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='Заказчики цифровых продуктов, которым нужно специфицировать свою задачу для разработчиков', signal=None)
+BAResponse(ba_text='Есть ли предпочтения по технологиям или ограничения?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='1. GigaChat API. 2.Веб-интерфейс для работы на ПК и мобильных устройствах. 3. Интеграция с облачными документами (через API)', signal=None)
+BAResponse(ba_text='Какие данные уже есть, и какие данные нужно собирать?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='Никаких данных нет. Необходимо изучить литературу для выработки методологии по уточнению технического задания с целью её дальнейшей интеграции в разрабатываемый программный продукт', signal=None)
+BAResponse(ba_text='Есть ли интеграции с другими системами?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='Интеграции с внешними системами нет', signal=None)
+BAResponse(ba_text='Какие есть дополнительные пожелания или требования?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='Нет', signal=None)
+BAResponse(ba_text='Отлично, на этом общие вопросы закончены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Анализирую описание задачи.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='По результатам анализа, генерация технического задания по вашему описанию поддерживается.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Процесс анализа завершён.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Начинаю формирование секции технического задания с общей информацией по проекту.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Формирую раздел ТЗ с описанием назначение проекта.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Раздел сформирован.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Формирую раздел ТЗ с описанием основных задач в рамках проекта.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Раздел сформирован.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Формирую раздел ТЗ с описанием интеграционных моментов.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Раздел сформирован.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Cекция с общей информацией по проекту сформирована.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Перейдём к уточнению деталей.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Начинаю уточнение деталей по предметной области проекта.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Какие типы цифровых продуктов будут рассматриваться в рамках данного решения (например, мобильные приложения, веб-сайты, корпоративные системы)? Будет ли решение универсальным или ориентированным на конкретные категории проектов?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='С нашей стороны критериев нет: ожидаем предложения/рекомендации с ващей стороны.', signal=None)
+BAResponse(ba_text='Какие ключевые этапы разработки типичного цифрового продукта вы бы выделили, чтобы мы могли учесть их при формировании структуры диалога чат-бота и логики формирования ТЗ?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text=None, signal=<WeakGlobalSignal.next_stage: 0>)
+BAResponse(ba_text='Уточнение деталей предметной области завершено.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Приступаю к уточнению пользовательских историй.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Начинаю извлечение пользовательских историй на основе предоставленной информации.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Извлечено пользовательских историй: 5.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости, редактировать, добавлять или удалять пользовательские истории.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.add: 6>, shortcut='Добавить user-историю', description=None), SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить user-историю', description=None), SignalInfo(signal=<WeakStateSignal.edit: 8>, shortcut='Изменить user-историю', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{'6131d': UserStory(id='6131d',
+                    statement='Пользователь экспортирует итоговое техническое '
+                              'задание из сервиса в формате PDF или DOCX для '
+                              'последующей передачи разработчику.',
+                    related_scenario_ids=[]),
+ 'afda0': UserStory(id='afda0',
+                    statement='Пользователь использует веб-сервис на различных '
+                              'устройствах (ПК, смартфоны) для удобства '
+                              'взаимодействия с системой при формировании '
+                              'технического задания.',
+                    related_scenario_ids=[]),
+ 'b7de5': UserStory(id='b7de5',
+                    statement='Пользователь (заказчик цифрового продукта) '
+                              'взаимодействует с чат-ботом, чтобы уточнить '
+                              'свои требования и получить предварительное '
+                              'техническое задание (ТЗ).',
+                    related_scenario_ids=[]),
+ 'c6167': UserStory(id='c6167',
+                    statement='Пользователь получает рекомендации от чат-бота '
+                              'о том, как правильно описать свои требования '
+                              'для улучшения качества технического задания.',
+                    related_scenario_ids=[]),
+ 'f3e01': UserStory(id='f3e01',
+                    statement='Пользователь редактирует сформированное '
+                              'техническое задание непосредственно во время '
+                              'диалога с ботом или через облачный интерфейс.',
+                    related_scenario_ids=[])}
+UserResponse(user_text=None, signal=<WeakGlobalSignal.next_stage: 0>)
+BAResponse(ba_text='Уточнение пользовательских историй завершено.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Начинаю извлечение ролей из пользовательских историй.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Извлечение завершено. Обнаружено ролей: 4.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Операция по извлечению ролей завершена.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Приступаю к уточнению поддерживаемых сценариев.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+{}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='6131d', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Экспортировать Техническое Задание (СИ# 671c1)\n1. Система отображает выбранный документ пользователю\n2. Пользователь нажимает кнопку «Экспорт»\n3. Система предлагает выбрать формат файла для экспорта («PDF» или «DOCX»)\n4. Пользователь выбирает необходимый ему формат файла\n5. Система начинает процесс генерации файла выбранного формата\n6. После завершения генерации система уведомляет пользователя о готовности файла\n7. Пользователь скачивает файл, нажимая соответствующую ссылку или кнопку', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценрий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+UserResponse(user_text=None, signal=<WeakStateSignal.approve: 4>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+{'671c1': Scenario(id='671c1',
+                   statement=None,
+                   title='Экспортировать Техническое Задание',
+                   steps=['Система отображает выбранный документ пользователю',
+                          'Пользователь нажимает кнопку «Экспорт»',
+                          'Система предлагает выбрать формат файла для '
+                          'экспорта («PDF» или «DOCX»)',
+                          'Пользователь выбирает необходимый ему формат файла',
+                          'Система начинает процесс генерации файла выбранного '
+                          'формата',
+                          'После завершения генерации система уведомляет '
+                          'пользователя о готовности файла',
+                          'Пользователь скачивает файл, нажимая '
+                          'соответствующую ссылку или кнопку'],
+                   related_userstory_ids=['6131d'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='b7de5', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Формировать Предварительное Техническое Задание (СИ# a7549)\n1. Система приветствует пользователя и запрашивает краткое описание желаемого цифрового продукта\n2. Пользователь вводит текстовое сообщение с описанием своего запроса\n3. Чат-бот уточняет детали описания, задавая уточняющие вопросы по функционалу, дизайну, интеграции и другим аспектам\n4. Пользователь отвечает на вопросы, предоставляя дополнительную информацию о своем запросе\n5. После получения всех необходимых данных чат-бот формирует предварительное техническое задание (ТЗ)\n6. Система предоставляет пользователю ссылку для просмотра предварительного ТЗ в облаке\n7. Пользователь переходит по ссылке и просматривает сформированное ТЗ\n8. Если у пользователя есть замечания или дополнения, он возвращается к чату и сообщает об этом\n9. Чат-бот предлагает внести изменения в ТЗ, основываясь на новых данных от пользователя\n10. Пользователь подтверждает внесенные изменения или продолжает обсуждение до достижения удовлетворительного результата\n11. Когда все уточнения завершены, система уведомляет пользователя о готовности финальной версии предварительного ТЗ\n12. Пользователь получает уведомление о возможности скачать готовый файл в форматах PDF или DOCX', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценрий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+UserResponse(user_text=None, signal=<WeakStateSignal.approve: 4>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+{'671c1': Scenario(id='671c1',
+                   statement=None,
+                   title='Экспортировать Техническое Задание',
+                   steps=['Система отображает выбранный документ пользователю',
+                          'Пользователь нажимает кнопку «Экспорт»',
+                          'Система предлагает выбрать формат файла для '
+                          'экспорта («PDF» или «DOCX»)',
+                          'Пользователь выбирает необходимый ему формат файла',
+                          'Система начинает процесс генерации файла выбранного '
+                          'формата',
+                          'После завершения генерации система уведомляет '
+                          'пользователя о готовности файла',
+                          'Пользователь скачивает файл, нажимая '
+                          'соответствующую ссылку или кнопку'],
+                   related_userstory_ids=['6131d']),
+ 'a7549': Scenario(id='a7549',
+                   statement=None,
+                   title='Формировать Предварительное Техническое Задание',
+                   steps=['Система приветствует пользователя и запрашивает '
+                          'краткое описание желаемого цифрового продукта',
+                          'Пользователь вводит текстовое сообщение с описанием '
+                          'своего запроса',
+                          'Чат-бот уточняет детали описания, задавая '
+                          'уточняющие вопросы по функционалу, дизайну, '
+                          'интеграции и другим аспектам',
+                          'Пользователь отвечает на вопросы, предоставляя '
+                          'дополнительную информацию о своем запросе',
+                          'После получения всех необходимых данных чат-бот '
+                          'формирует предварительное техническое задание (ТЗ)',
+                          'Система предоставляет пользователю ссылку для '
+                          'просмотра предварительного ТЗ в облаке',
+                          'Пользователь переходит по ссылке и просматривает '
+                          'сформированное ТЗ',
+                          'Если у пользователя есть замечания или дополнения, '
+                          'он возвращается к чату и сообщает об этом',
+                          'Чат-бот предлагает внести изменения в ТЗ, '
+                          'основываясь на новых данных от пользователя',
+                          'Пользователь подтверждает внесенные изменения или '
+                          'продолжает обсуждение до достижения '
+                          'удовлетворительного результата',
+                          'Когда все уточнения завершены, система уведомляет '
+                          'пользователя о готовности финальной версии '
+                          'предварительного ТЗ',
+                          'Пользователь получает уведомление о возможности '
+                          'скачать готовый файл в форматах PDF или DOCX'],
+                   related_userstory_ids=['b7de5'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='c6167', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Получить Рекомендации по Требованиям (СИ# 0ed5c)\n1. Система отображает пользователю форму ввода описания задачи или проблемы\n2. Пользователь заполняет форму описанием своего запроса или задачи\n3. Система обрабатывает введенные данные и предлагает уточняющие вопросы для уточнения требований\n4. Пользователь отвечает на уточняющие вопросы путем выбора предложенных вариантов ответов или введения дополнительных данных\n5. Система формирует набор рекомендаций по улучшению описания требований на основе полученных уточнений\n6. Пользователь просматривает сформированные рекомендации\n7. Если рекомендации удовлетворяют пользователя, он подтверждает получение рекомендаций\n8. Система сохраняет полученные рекомендации и предоставляет пользователю возможность экспортировать их в формате PDF или DOCX\n9. Если рекомендации требуют доработки, пользователь запрашивает дополнительные уточнения у системы\n10. Система повторно проводит уточнение требований и обновляет рекомендации\n11. Процесс повторяется до тех пор, пока пользователь не подтвердит удовлетворение рекомендациями', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценрий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+UserResponse(user_text=None, signal=<WeakStateSignal.approve: 4>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{'0ed5c': Scenario(id='0ed5c',
+                   statement=None,
+                   title='Получить Рекомендации по Требованиям',
+                   steps=['Система отображает пользователю форму ввода '
+                          'описания задачи или проблемы',
+                          'Пользователь заполняет форму описанием своего '
+                          'запроса или задачи',
+                          'Система обрабатывает введенные данные и предлагает '
+                          'уточняющие вопросы для уточнения требований',
+                          'Пользователь отвечает на уточняющие вопросы путем '
+                          'выбора предложенных вариантов ответов или введения '
+                          'дополнительных данных',
+                          'Система формирует набор рекомендаций по улучшению '
+                          'описания требований на основе полученных уточнений',
+                          'Пользователь просматривает сформированные '
+                          'рекомендации',
+                          'Если рекомендации удовлетворяют пользователя, он '
+                          'подтверждает получение рекомендаций',
+                          'Система сохраняет полученные рекомендации и '
+                          'предоставляет пользователю возможность '
+                          'экспортировать их в формате PDF или DOCX',
+                          'Если рекомендации требуют доработки, пользователь '
+                          'запрашивает дополнительные уточнения у системы',
+                          'Система повторно проводит уточнение требований и '
+                          'обновляет рекомендации',
+                          'Процесс повторяется до тех пор, пока пользователь '
+                          'не подтвердит удовлетворение рекомендациями'],
+                   related_userstory_ids=['c6167']),
+ '671c1': Scenario(id='671c1',
+                   statement=None,
+                   title='Экспортировать Техническое Задание',
+                   steps=['Система отображает выбранный документ пользователю',
+                          'Пользователь нажимает кнопку «Экспорт»',
+                          'Система предлагает выбрать формат файла для '
+                          'экспорта («PDF» или «DOCX»)',
+                          'Пользователь выбирает необходимый ему формат файла',
+                          'Система начинает процесс генерации файла выбранного '
+                          'формата',
+                          'После завершения генерации система уведомляет '
+                          'пользователя о готовности файла',
+                          'Пользователь скачивает файл, нажимая '
+                          'соответствующую ссылку или кнопку'],
+                   related_userstory_ids=['6131d']),
+ 'a7549': Scenario(id='a7549',
+                   statement=None,
+                   title='Формировать Предварительное Техническое Задание',
+                   steps=['Система приветствует пользователя и запрашивает '
+                          'краткое описание желаемого цифрового продукта',
+                          'Пользователь вводит текстовое сообщение с описанием '
+                          'своего запроса',
+                          'Чат-бот уточняет детали описания, задавая '
+                          'уточняющие вопросы по функционалу, дизайну, '
+                          'интеграции и другим аспектам',
+                          'Пользователь отвечает на вопросы, предоставляя '
+                          'дополнительную информацию о своем запросе',
+                          'После получения всех необходимых данных чат-бот '
+                          'формирует предварительное техническое задание (ТЗ)',
+                          'Система предоставляет пользователю ссылку для '
+                          'просмотра предварительного ТЗ в облаке',
+                          'Пользователь переходит по ссылке и просматривает '
+                          'сформированное ТЗ',
+                          'Если у пользователя есть замечания или дополнения, '
+                          'он возвращается к чату и сообщает об этом',
+                          'Чат-бот предлагает внести изменения в ТЗ, '
+                          'основываясь на новых данных от пользователя',
+                          'Пользователь подтверждает внесенные изменения или '
+                          'продолжает обсуждение до достижения '
+                          'удовлетворительного результата',
+                          'Когда все уточнения завершены, система уведомляет '
+                          'пользователя о готовности финальной версии '
+                          'предварительного ТЗ',
+                          'Пользователь получает уведомление о возможности '
+                          'скачать готовый файл в форматах PDF или DOCX'],
+                   related_userstory_ids=['b7de5'])}
+UserResponse(user_text=None, signal=<WeakGlobalSignal.next_stage: 0>)
+BAResponse(ba_text='Уточнение сценариев завершено.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Начинаю извлечение функциональных требований.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Извлечение завершено. Обнаружено функциональных требований: 32.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+{'1e6cc': FunctionalRequirementGroup(id='1e6cc',
+                                     title='Управление диалоговым '
+                                           'взаимодействием',
+                                     grouped_funcreq_ids=['7cb1f',
+                                                          'acf15',
+                                                          '5f224',
+                                                          'a70df',
+                                                          '50fe8',
+                                                          '9a48d',
+                                                          'da98f',
+                                                          'e51ca',
+                                                          'a7875']),
+ '3be9b': FunctionalRequirementGroup(id='3be9b',
+                                     title='Формирование и генерация '
+                                           'документов',
+                                     grouped_funcreq_ids=['63856',
+                                                          '65d07',
+                                                          '8e935',
+                                                          'd9f39',
+                                                          '7656e',
+                                                          'e7e38',
+                                                          '11b18',
+                                                          '159fb',
+                                                          'b2486']),
+ '50971': FunctionalRequirementGroup(id='50971',
+                                     title='Мониторинг состояния и '
+                                           'информирование пользователя',
+                                     grouped_funcreq_ids=['3d856',
+                                                          '3e4e8',
+                                                          '14e1e']),
+ '5fc8b': FunctionalRequirementGroup(id='5fc8b',
+                                     title='Сбор и уточнение требований',
+                                     grouped_funcreq_ids=['42e40',
+                                                          '8c98f',
+                                                          '92d5e',
+                                                          '27097',
+                                                          '35a93',
+                                                          '83fb5']),
+ '8baa0': FunctionalRequirementGroup(id='8baa0',
+                                     title='Поддержка работы с '
+                                           'экспортированными документами',
+                                     grouped_funcreq_ids=['5c99f',
+                                                          '0b0b5',
+                                                          '98460',
+                                                          'fdeb3',
+                                                          '959b0'])}
+{'0b0b5': FunctionalRequirement(id='0b0b5',
+                                statement='Пользователь должен иметь '
+                                          'возможность скачать готовый файл по '
+                                          'предоставленной системе ссылке или '
+                                          'кнопке "Скачать".',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '11b18': FunctionalRequirement(id='11b18',
+                                statement='Полученный файл полностью '
+                                          'соответствует выбранному формату '
+                                          '(PDF или DOCX).',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '14e1e': FunctionalRequirement(id='14e1e',
+                                statement='Набор рекомендаций, полученных в '
+                                          'результате обработки '
+                                          'пользовательских запросов, '
+                                          'становится доступным пользователю '
+                                          'для ознакомления немедленно после '
+                                          'завершения соответствующего этапа '
+                                          'уточнения требований.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '159fb': FunctionalRequirement(id='159fb',
+                                statement='Во время генерации файла '
+                                          'пользователь уведомляется о текущем '
+                                          'статусе операции посредством '
+                                          'индикатора прогресса.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '27097': FunctionalRequirement(id='27097',
+                                statement='Цикл уточнения требований '
+                                          'повторяется до момента явного '
+                                          'подтверждения пользователем '
+                                          'готовности итогового варианта '
+                                          'технического задания (ТЗ).',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '35a93': FunctionalRequirement(id='35a93',
+                                statement='Пользователь получает возможность '
+                                          'явно подтверждать соответствие '
+                                          'каждой части подготовленного '
+                                          'технического задания своим '
+                                          'требованиям либо запрашивать '
+                                          'дополнительные разъяснения или '
+                                          'изменения.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '3d856': FunctionalRequirement(id='3d856',
+                                statement='Система предоставляет ссылку '
+                                          'пользователю для доступа к текущей '
+                                          'версии технического задания, '
+                                          'хранящейся в облачном сервисе, '
+                                          'сразу после её сохранения системой.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '3e4e8': FunctionalRequirement(id='3e4e8',
+                                statement='После подтверждения всех уточнений '
+                                          'и достижения финальной версии '
+                                          'технического задания система '
+                                          'уведомляет пользователя о '
+                                          'готовности итогового файла '
+                                          'посредством отправки уведомления по '
+                                          'указанному им каналу связи.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '42e40': FunctionalRequirement(id='42e40',
+                                statement='Система предоставляет пользователю '
+                                          'возможность возвращаться в '
+                                          'диалоговое окно чата для сообщения '
+                                          'дополнительных данных или '
+                                          'исправлений после завершения '
+                                          'первоначального этапа сбора '
+                                          'информации.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '50fe8': FunctionalRequirement(id='50fe8',
+                                statement='Процесс уточнения требований '
+                                          'повторяется циклически до тех пор, '
+                                          'пока пользователь явно не '
+                                          'подтвердит удовлетворённость '
+                                          'текущим состоянием собранных '
+                                          'данных.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '5c99f': FunctionalRequirement(id='5c99f',
+                                statement='Система должна уведомлять '
+                                          'пользователя о завершении генерации '
+                                          'экспортируемого файла путем вывода '
+                                          'сообщения "Файл успешно создан".',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '5f224': FunctionalRequirement(id='5f224',
+                                statement='Чат-бот после получения начального '
+                                          'описания от пользователя '
+                                          'последовательно задаёт ему серию '
+                                          'уточнений по функциональности, '
+                                          'дизайну, интеграции и другим важным '
+                                          'характеристикам будущего продукта.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '63856': FunctionalRequirement(id='63856',
+                                statement='Пользователь имеет возможность '
+                                          'скачать подготовленное техническое '
+                                          'задание в одном из двух '
+                                          'поддерживаемых форматов: PDF или '
+                                          'DOCX.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '65d07': FunctionalRequirement(id='65d07',
+                                statement='Перед началом процедуры экспорта '
+                                          'система отображает предварительный '
+                                          'просмотр текущего содержимого '
+                                          'документа.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '7656e': FunctionalRequirement(id='7656e',
+                                statement='Выбор формата файла автоматически '
+                                          'запускает процесс генерации '
+                                          'соответствующего файла выбранного '
+                                          'типа.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '7cb1f': FunctionalRequirement(id='7cb1f',
+                                statement='Система при первом взаимодействии с '
+                                          'новым пользователем выводит '
+                                          'приветствие и запрашивает у него '
+                                          'краткое описание желаемого '
+                                          'цифрового продукта.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '83fb5': FunctionalRequirement(id='83fb5',
+                                statement='При необходимости дополнительной '
+                                          'детализации требований система '
+                                          'предлагает пользователю уточняющие '
+                                          'вопросы и рекомендации по улучшению '
+                                          'формулировок, основываясь на '
+                                          'анализе ранее предоставленной '
+                                          'информации.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '8c98f': FunctionalRequirement(id='8c98f',
+                                statement='После получения новых данных от '
+                                          'пользователя чат-бот автоматически '
+                                          'обновляет текущее состояние '
+                                          'предварительного технического '
+                                          'задания (ТЗ), сохраняя предыдущие '
+                                          'версии для возможности сравнения.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '8e935': FunctionalRequirement(id='8e935',
+                                statement='После активации функции экспорта '
+                                          'система запрашивает у пользователя '
+                                          'выбор желаемого формата файла среди '
+                                          'доступных вариантов: PDF или DOCX.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '92d5e': FunctionalRequirement(id='92d5e',
+                                statement='По завершении каждого цикла '
+                                          'уточнения требований чат-бот '
+                                          'формирует новую редакцию '
+                                          'предварительной версии технического '
+                                          'задания (ТЗ), которая доступна '
+                                          'пользователю для просмотра и '
+                                          'подтверждения.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '959b0': FunctionalRequirement(id='959b0',
+                                statement='Если пользователь отменяет процесс '
+                                          'скачивания файла, система должна '
+                                          'сохранять созданный файл до момента '
+                                          'явного удаления пользователем или '
+                                          'истечения срока хранения.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '98460': FunctionalRequirement(id='98460',
+                                statement='Формат экспортируемых файлов должен '
+                                          'соответствовать выбранному '
+                                          'пользователем формату из доступных '
+                                          'вариантов (PDF, DOCX).',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '9a48d': FunctionalRequirement(id='9a48d',
+                                statement='Если пользователь выражает '
+                                          'неудовлетворенность результатом '
+                                          'текущего цикла уточнения, система '
+                                          'повторно активирует процедуру '
+                                          'уточнения требований и обновляет '
+                                          'рекомендации согласно полученным '
+                                          'данным.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'a70df': FunctionalRequirement(id='a70df',
+                                statement='Каждый вопрос, задаваемый системой, '
+                                          'содержит чётко определённую цель '
+                                          'сбора информации и позволяет '
+                                          'пользователю выбрать ответ из '
+                                          'предложенных вариантов или '
+                                          'предоставить свободный текстовый '
+                                          'ответ.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'a7875': FunctionalRequirement(id='a7875',
+                                statement='Все изменения, внесенные '
+                                          'пользователем во время диалога, '
+                                          'немедленно отражаются в текущем '
+                                          'состоянии формируемого технического '
+                                          'задания.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'acf15': FunctionalRequirement(id='acf15',
+                                statement='Пользователь вправе вводить ответы '
+                                          'на вопросы системы в свободной '
+                                          'форме текстом.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'b2486': FunctionalRequirement(id='b2486',
+                                statement='Подтверждение готовности документа '
+                                          'позволяет сохранить текущую версию '
+                                          'рекомендаций и выполнить её '
+                                          'последующий экспорт в один из '
+                                          'указанных форматов (PDF или DOCX).',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'd9f39': FunctionalRequirement(id='d9f39',
+                                statement='Экспортированный файл включает '
+                                          'полную версию документа, актуальную '
+                                          'на момент запуска процедуры '
+                                          'экспорта.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'da98f': FunctionalRequirement(id='da98f',
+                                statement='По завершении каждого этапа '
+                                          'уточнения требований система '
+                                          'сохраняет промежуточные результаты '
+                                          'и предоставляет пользователю '
+                                          'возможность просмотреть текущее '
+                                          'состояние формируемого технического '
+                                          'задания.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'e51ca': FunctionalRequirement(id='e51ca',
+                                statement='На каждом этапе взаимодействия '
+                                          'система обеспечивает возможность '
+                                          'возврата к предыдущему шагу для '
+                                          'внесения изменений или дополнений в '
+                                          'ранее введённые данные.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'e7e38': FunctionalRequirement(id='e7e38',
+                                statement='Процедура генерации файла '
+                                          'завершается успешно без '
+                                          'возникновения ошибок и задержек, '
+                                          'превышающих допустимое время '
+                                          'ожидания пользователя.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'fdeb3': FunctionalRequirement(id='fdeb3',
+                                statement='При попытке повторного скачивания '
+                                          'уже существующего файла '
+                                          'пользователю должна отображаться та '
+                                          'же ссылка или кнопка для скачивания '
+                                          'без повторной генерации файла.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set())}
+BAResponse(ba_text='Операция по извлечению функциональных требований завершена.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Приступаю к добавлению функциональных ограничений', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости, добавить, удалить, отредактировать или получить рекомендацию функционального ограничения.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.add: 6>, shortcut='Добавить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.edit: 8>, shortcut='Изменить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить рекомендацию ограничения', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование возможного/релевантного ограничения.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Пожалуйста, введите идентификатор функционального требования, на основе которой будет предложено ограничение.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='50fe8', signal=None)
+BAResponse(ba_text='Функциональное требование успешно выбрано.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Примите решение по предложенному ограничению: добавить его в ТЗ или отклонить: \nЧат-бот предоставляет пользователю кнопку подтверждения "Подтверждаю" после каждого цикла уточнений, нажатие которой завершает процесс сбора информации и фиксирует текущее состояние данных как окончательное', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить ограничение в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+UserResponse(user_text=None, signal=<WeakStateSignal.approve: 4>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости, добавить, удалить, отредактировать или получить рекомендацию функционального ограничения.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.add: 6>, shortcut='Добавить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.edit: 8>, shortcut='Изменить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить рекомендацию ограничения', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{'67f8b': FunctionalRestriction(id='67f8b',
+                                statement='Чат-бот предоставляет пользователю '
+                                          'кнопку подтверждения "Подтверждаю" '
+                                          'после каждого цикла уточнений, '
+                                          'нажатие которой завершает процесс '
+                                          'сбора информации и фиксирует '
+                                          'текущее состояние данных как '
+                                          'окончательное',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_freq_ids={'50fe8'})}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование возможного/релевантного ограничения.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Пожалуйста, введите идентификатор функционального требования, на основе которой будет предложено ограничение.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='65d07', signal=None)
+BAResponse(ba_text='Функциональное требование успешно выбрано.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Примите решение по предложенному ограничению: добавить его в ТЗ или отклонить: \nПериод времени от момента запроса предварительного просмотра до отображения пользователю составляет не более 5 секунд при условии стабильного интернет-соединения со скоростью загрузки данных не менее 1 Мбит/с', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить ограничение в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+UserResponse(user_text=None, signal=<WeakStateSignal.approve: 4>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости, добавить, удалить, отредактировать или получить рекомендацию функционального ограничения.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.add: 6>, shortcut='Добавить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.edit: 8>, shortcut='Изменить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить рекомендацию ограничения', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{'2288c': FunctionalRestriction(id='2288c',
+                                statement='Период времени от момента запроса '
+                                          'предварительного просмотра до '
+                                          'отображения пользователю составляет '
+                                          'не более 5 секунд при условии '
+                                          'стабильного интернет-соединения со '
+                                          'скоростью загрузки данных не менее '
+                                          '1 Мбит/с',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_freq_ids={'65d07'}),
+ '67f8b': FunctionalRestriction(id='67f8b',
+                                statement='Чат-бот предоставляет пользователю '
+                                          'кнопку подтверждения "Подтверждаю" '
+                                          'после каждого цикла уточнений, '
+                                          'нажатие которой завершает процесс '
+                                          'сбора информации и фиксирует '
+                                          'текущее состояние данных как '
+                                          'окончательное',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_freq_ids={'50fe8'})}
+UserResponse(user_text=None, signal=<WeakGlobalSignal.next_stage: 0>)
+BAResponse(ba_text='Добавление функциональных ограничений завершено.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Приступаю к формированию системных требований.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Начинаю извлечение системных требований.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Извлечено системных требований: 10.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+{'33154': SystemRequirement(id='33154',
+                            statement='Должна быть предусмотрена защита '
+                                      'конфиденциальных данных заказчика при '
+                                      'хранении и обработке информации в '
+                                      'системе.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ '573d9': SystemRequirement(id='573d9',
+                            statement='Требуется интеграция с облачным '
+                                      'сервисом хранения документов для '
+                                      'обеспечения возможности совместного '
+                                      'доступа и редактирования ТЗ несколькими '
+                                      'участниками одновременно.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ '5b375': SystemRequirement(id='5b375',
+                            statement='Интерфейс взаимодействия с системой '
+                                      'должен быть доступен пользователям как '
+                                      'на персональных компьютерах, так и на '
+                                      'мобильных устройствах.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ '7276c': SystemRequirement(id='7276c',
+                            statement='Формулировка вопросов и подсказок в '
+                                      'диалоговом интерфейсе должна '
+                                      'соответствовать общепринятым стандартам '
+                                      'описания требований к цифровым '
+                                      'продуктам.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ 'a8515': SystemRequirement(id='a8515',
+                            statement='Система обязана обеспечить возможность '
+                                      'автоматического формирования '
+                                      'технического задания (ТЗ) на основании '
+                                      'информации, полученной от пользователя '
+                                      'во время диалога.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ 'af0ef': SystemRequirement(id='af0ef',
+                            statement='Пользователь должен иметь возможность '
+                                      'редактировать формируемое ТЗ как '
+                                      'непосредственно в процессе диалога, так '
+                                      'и через отдельный облачный интерфейс.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ 'ca570': SystemRequirement(id='ca570',
+                            statement='Готовое техническое задание должно '
+                                      'предоставляться пользователю в двух '
+                                      'форматах: PDF и DOCX.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ 'ef7ea': SystemRequirement(id='ef7ea',
+                            statement='Система должна поддерживать интеграцию '
+                                      'с платформой GigaChat посредством '
+                                      'использования ее API для ведения '
+                                      'интерактивного диалога с '
+                                      'пользователями.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ 'f1aa8': SystemRequirement(id='f1aa8',
+                            statement='При формировании технического задания '
+                                      'система должна учитывать тип '
+                                      'создаваемого цифрового продукта '
+                                      '(мобильное приложение, веб-сайт, '
+                                      'корпоративная система и т.д.) и '
+                                      'адаптироваться под него.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ 'fe936': SystemRequirement(id='fe936',
+                            statement='Реализовать механизм экспортирования '
+                                      'готового технического задания из '
+                                      'системы в указанные форматы без потери '
+                                      'содержимого и структуры документа.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set())}
+BAResponse(ba_text='Вы можете, при необходимости, редактировать, добавлять или удалять системные требования.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.add: 6>, shortcut='Добавить требование', description=None), SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить требование', description=None), SignalInfo(signal=<WeakStateSignal.edit: 8>, shortcut='Изменить требование', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+UserResponse(user_text=None, signal=<WeakGlobalSignal.next_stage: 0>)
+BAResponse(ba_text='Формирование системных требований завершено.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Приступаю к добавлению системных ограничений', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости, добавить, удалить, отредактировать системное ограничение или получить рекомендацию ограничения.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.add: 6>, shortcut='Добавить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.edit: 8>, shortcut='Изменить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение ограничения', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование возможного/релевантного ограничения.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Пожалуйста, введите идентификатор системного требования, на основе которой будет предложено ограничение.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='7276c', signal=None)
+BAResponse(ba_text='Системное требование успешно выбрано.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Примите решение по предложенному ограничению: добавить его в ТЗ или отклонить: \nДиалоговые сообщения системы должны использовать терминологию, соответствующую ГОСТ Р 57318–2016 "Требования к описанию программного обеспечения", обеспечивая понятность и точность формулировок для конечных пользователей без необходимости дополнительного пояснения терминов', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить ограничение в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+UserResponse(user_text=None, signal=<WeakStateSignal.approve: 4>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости, добавить, удалить, отредактировать системное ограничение или получить рекомендацию ограничения.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.add: 6>, shortcut='Добавить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.edit: 8>, shortcut='Изменить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение ограничения', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{'40f23': SystemRestriction(id='40f23',
+                            statement='Диалоговые сообщения системы должны '
+                                      'использовать терминологию, '
+                                      'соответствующую ГОСТ Р 57318–2016 '
+                                      '"Требования к описанию программного '
+                                      'обеспечения", обеспечивая понятность и '
+                                      'точность формулировок для конечных '
+                                      'пользователей без необходимости '
+                                      'дополнительного пояснения терминов',
+                            related_sreq_ids={'7276c'},
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set())}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование возможного/релевантного ограничения.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Пожалуйста, введите идентификатор системного требования, на основе которой будет предложено ограничение.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='33154', signal=None)
+BAResponse(ba_text='Системное требование успешно выбрано.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Примите решение по предложенному ограничению: добавить его в ТЗ или отклонить: \nСистема должна использовать шифрование AES-256 для защиты всех персональных и коммерческих данных заказчиков во время хранения и передачи по сети', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить ограничение в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+UserResponse(user_text=None, signal=<WeakStateSignal.approve: 4>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости, добавить, удалить, отредактировать системное ограничение или получить рекомендацию ограничения.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.add: 6>, shortcut='Добавить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.edit: 8>, shortcut='Изменить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение ограничения', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{'40f23': SystemRestriction(id='40f23',
+                            statement='Диалоговые сообщения системы должны '
+                                      'использовать терминологию, '
+                                      'соответствующую ГОСТ Р 57318–2016 '
+                                      '"Требования к описанию программного '
+                                      'обеспечения", обеспечивая понятность и '
+                                      'точность формулировок для конечных '
+                                      'пользователей без необходимости '
+                                      'дополнительного пояснения терминов',
+                            related_sreq_ids={'7276c'},
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ 'a3ab1': SystemRestriction(id='a3ab1',
+                            statement='Система должна использовать шифрование '
+                                      'AES-256 для защиты всех персональных и '
+                                      'коммерческих данных заказчиков во время '
+                                      'хранения и передачи по сети',
+                            related_sreq_ids={'33154'},
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set())}
+UserResponse(user_text=None, signal=<WeakGlobalSignal.next_stage: 0>)
+BAResponse(ba_text='Добавление системных ограничений завершено.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Процесс формирования технического задания завершён.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)

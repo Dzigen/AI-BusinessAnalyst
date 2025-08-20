@@ -1,0 +1,1 @@
+from .NonFuncRequirementsExtractor import NonFuncRequirementsExtractor, NonFuncRequirementsExtractorConfig

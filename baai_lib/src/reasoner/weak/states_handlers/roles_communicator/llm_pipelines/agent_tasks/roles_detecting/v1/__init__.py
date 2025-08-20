@@ -1,0 +1,1 @@
+from .suite import RDETECT_SUITE_V1

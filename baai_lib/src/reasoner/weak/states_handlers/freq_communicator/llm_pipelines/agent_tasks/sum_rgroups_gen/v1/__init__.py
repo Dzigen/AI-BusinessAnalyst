@@ -1,0 +1,1 @@
+from .suite import SFRGGEN_SUITE_V1

@@ -1,0 +1,1 @@
+from .suite import CFG_SUITE_V1

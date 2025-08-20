@@ -1,0 +1,14 @@
+from .agent_tasks.t_classify import AgentTaskClassificationTaskConfigSelector
+from .agent_tasks.general_tasks_summarizing import AgentGTSummarisationTaskConfigSelector
+from .agent_tasks.t_summarizing import AgentSTSummarisationTaskConfigSelector
+from .agent_tasks.integraion_summarizing import AgentIntgrSummarisationTaskConfigSelector
+
+TCLASSIFIER_MAIN_LOG_PATH = 'log/reasoner/weak/taskg_communicator/llm_pipelines/task_classifier'
+
+DEFAULT_TCLS_TASK_CONFIG = AgentTaskClassificationTaskConfigSelector.select(base_config_version='v1')
+
+GINFOEXTR_MAIN_LOG_PATH = 'log/reasoner/weak/taskg_communicator/llm_pipelines/ginfo_extractor'
+
+DEFAULT_GTSUMM_TASK_CONFIG = AgentGTSummarisationTaskConfigSelector.select(base_config_version='v1')
+DEFAULT_STSUMM_TASK_CONFIG = AgentSTSummarisationTaskConfigSelector.select(base_config_version='v1')
+DEFAULT_INGRSUMM_TASK_CONFIG = AgentIntgrSummarisationTaskConfigSelector.select(base_config_version='v1')

@@ -1,0 +1,1248 @@
+BAResponse(ba_text='Привет! Я ваш AI Бизнес Аналитик.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Давайте начнём формировать техническое задание.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Сейчас я задам вам несколько общих вопросов, чтобы лучше понять задачу.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Опишите вашу задачу простыми словами.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='Целью данного исследования является создание графа знаний, который может быть использован в качестве внешней памяти для таких LLM агентов банка как виртуальный тренажер для клиентских менеджеров, а также агент для обобщения обратной связи от клиентов с целью развития продуктов Банка. Одним из направлений использования такого графа является цифровой наставник, который анализирует коммуникации менеджера с клиентами Банка, проверяет информацию на основе своей базы данных (памяти) о продукте и даёт рекомендации. Существующие решения, аналогичные цифровому наставнику, такие как 3WIN-AI Training Simulator [1], представляют собой коммерческие, closed-source решения, архитектура которых закрыта.  Цифровой наставник обладает следующим функционалом: 1.\tВалидация ответа менеджера в рамках текущей коммуникации с клиентом. 2.\tКорректировка ответа менеджера в зависимости от сделанных ошибок. 3.\tРекомендация возможного ответа для клиента в рамках текущей коммуникации. 4.\tФормирование пространства памяти наставника за счёт структурированных и слабоструктурированных текстовых данных.', signal=None)
+BAResponse(ba_text='Какую проблему вы хотите решить с помощью продукта?', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='В Банке разрабатываются системы анализа коммуникаций с клиентами. Среди таких систем создаются цифровые тренажеры для клиентских менеджеров, которые позволяют, отрабатывать навыки работы с клиентами, в том числе работу с возражениями, повышать квалификацию клиентских менеджеров, и в конечном итоге повышать конверсию продаж. Кроме того, системы анализа коммуникаций с клиентами позволяют развивать продукты Банка через обратную связь, включая вопросы, жалобы и предложения, таким образом обобщая клиентский опыт.  Для работы со слабоструктурированной информацией, содержащейся в коммуникациях, необходимы LLM агенты, которые должны понимать семантику сообщений и диалогов. Для того, чтобы такой агент мог накапливать знания, его нужно снабдить внешней памятью. Исследования, в том числе проведенные Сколтехом, показывают, что наиболее эффективным инструментом создания внешней памяти для LLM-агентов являются графы знаний.  Создание такого цифрового тренажера, использующего граф как внешнюю память LLM-агента, позволит значительно повысить качество работы менеджеров с клиентами, снизить отток и повысить лояльность клиентов, и таким образом позволит повысить прибыль Банка.', signal=None)
+BAResponse(ba_text='Какой результат вы ожидаете? (Что должно быть на выходе?)', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='MVP цифрового наставника, который может: 1. Обновлять и изменять граф знаний с использованием данных из структурированных источников (критерий – построение графа без ошибок со внесением информации). 2. Вносить в граф знаний сущности и связи из слабоструктурированных источников (критерий – построение графа без ошибок со внесением информации). 3. Формировать ответы на основе построенного графа знаний (критерий – метрики полного совпадения (EM), F1-score). 4. Валидировать ответ менеджера на предмет корректности формата коммуникации с клиентом (критерий – F1-score). 5. Верифицировать фактологическую информацию в ответе менеджера на основе построенного графа знаний (критерий – F1-score).', signal=None)
+BAResponse(ba_text='Кто будет пользоваться продуктом? (Целевая аудитория)', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='Менеджеры технической поддержки по общению с клиентами банка', signal=None)
+BAResponse(ba_text='Есть ли предпочтения по технологиям или ограничения?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='Одним из наиболее перспективных SOTA подходов является идея создания полноценной памяти агентов, построенных на основе графов. В общих фреймворках для построения и отслеживания LLM агентов, таких как LangGraph [5], есть некоторая фунциональность для работы с памятью агентов. Однако мы будем опираться на более специализированные решения.  В текущем году было представлено несколько решений по построению внешней памяти агентов на графах, среди них можно выделить две работы: Mem0 ("mem-zero") [6] и A-Mem: Agentic Memory [7]. В качестве бенчмарка для тестирования перечисленных решений использовался датасет LOCOMO [8], содержащий диалоги и вопросы к ним. Средняя длина диалога составляет 26000 токенов, и несмотря на то, что в настоящее время LLMs имеют возможность обработки такой длины контекста, было показано, что эффективность использования информации из контекста при генерации падает при увеличении длины контекста [9]. Таким образом, бенчмарк LOCOMO дает возможность оценить эффективность сохранения и извлечения фактов из внешней памяти для использования LLM агентом при генерации сообщений в диалоге. Граф знаний в решении AriGraph [2, 3], на котором будет базироваться данная работа, сочетает в себе как структурированные элементы (узлы и связи в семантической памяти, связи между семантическими и эпизодическими узлами), так и неструктурированные (текст в эпизодических узлах), что представляет собой потенциальное преимущество перед вышеперечисленными подходами. В работе [2] были приведены SOTA метрики (Exact Match) подхода AriGraph на датасете HotpotQA. В ходе данного проекта предполагается улучшение алгоритма извлечения и фильтрации релевантных фактов из графа знаний в системе AriGraph. Подтверждение данных предположений на бенчмарке LOCOMO будет представлять решение на уровне мировой SOTA, и будет означать существенное развитие технологий построения LLM-агентов.', signal=None)
+BAResponse(ba_text='Какие данные уже есть, и какие данные нужно собирать?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='1. Потребуется подготовить набор текстовых документов, на основе которых цифровой тренажёр должен валидировать ответы клиентского менеджера. 2. Необходимо сформировать методологии, по которым клиентский менеджер ведёт коммуникацию', signal=None)
+BAResponse(ba_text='Есть ли интеграции с другими системами?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='Интеграции с другими системами нет', signal=None)
+BAResponse(ba_text='Какие есть дополнительные пожелания или требования?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='Поскольку для надежной архитектуры памяти необходима интеграция как структурированных, так и неструктурированных данных, такая интеграция осуществляется параллельно с концепциями семантической и эпизодической памяти. Граф знаний представляет собой сеть взаимосвязанных семантических знаний, в то время как эпизодические воспоминания отображаются в виде эпизодических ребер, которые могут связывать множество отношений внутри графа.  Построение графа, а также валидация и корректировка ответа менеджера будут реализованы в виде агентов на основе LLM. Тестирование алгоритмов планируется проводить с использованием GigaChat (при наличии доступа к вычислительным и информационным ресурсам Сбербанка), либо с LLaMA и QWEN (на мощностях Сколтеха). Финальное решение будет реализовано с использованием GigaChat. Предлагаемый подход является развитием подхода AriGraph [2, 3], и будет осуществляться исследовательской командой, в состав которой будут входить авторы данной статьи из Сколтеха.', signal=None)
+BAResponse(ba_text='Отлично, на этом общие вопросы закончены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Анализирую описание задачи.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='По результатам анализа, генерация технического задания по вашему описанию поддерживается.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Процесс анализа завершён.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Начинаю формирование секции технического задания с общей информацией по проекту.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Формирую раздел ТЗ с описанием назначение проекта.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Раздел сформирован.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Формирую раздел ТЗ с описанием основных задач в рамках проекта.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Раздел сформирован.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Формирую раздел ТЗ с описанием интеграционных моментов.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Раздел сформирован.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Cекция с общей информацией по проекту сформирована.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Перейдём к уточнению деталей.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Начинаю уточнение деталей по предметной области проекта.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Какие критерии качества ответов агента будут использоваться помимо EM и F1-score, и каким образом они повлияют на оценку эффективности цифрового наставника?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='только EM и F1-score', signal=None)
+BAResponse(ba_text='Какие типы структурированных и слабоструктурированных данных будут использованы для формирования графа знаний, и какой объем этих данных ожидается на начальном этапе разработки MVP?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='Для построения графа знаний будут использоваться только данные в текстовом формате, которые содержат информацию на естественном языке. По количеству ожидается несколько тысяч абзацев текста', signal=None)
+BAResponse(ba_text='Какие категории информации (например, описание продуктов банка, правила взаимодействия с клиентами, часто задаваемые вопросы и т.д.) содержатся в указанных текстовых данных, и насколько детализированными они должны быть для эффективного функционирования цифрового наставника?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='Думаем в этих текстах точно будет присутствовать эти категории информации: описание продуктов банка, правила взаимодействия с клиентами, часто задаваемые вопросы. Возможно что-то ешё: в рамках проекта потребуется в отдельности проанализировать имеющиеся наборы информации для её категоризации/систематизации. ', signal=None)
+BAResponse(ba_text='Какие форматы представления текстовой информации доступны сейчас (например, документы Word, PDF-файлы, веб-страницы, электронные письма)? Будет ли предоставляться доступ ко всем источникам сразу или потребуется организовать процесс сбора и подготовки данных отдельно?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='Скорее всего будет предоставлен исходный набор источников сразу в формате pdf-документов', signal=None)
+BAResponse(ba_text='Какие технические характеристики и особенности форматирования PDF-документов следует учитывать при обработке текстов (например, наличие таблиц, изображений, специфического шрифта, структуры разделов)?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='из pdf-документов потребуется извлекать только абзацы текста, минуя таблицы и изображения. При этом должна распознаваться структура документа: разделы/подазделы, абзацы, заголовки', signal=None)
+BAResponse(ba_text='Какие языки используются в предоставляемых PDF-документах, и требуется ли поддержка мультиязычности в процессе обработки и анализа текстовой информации?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='в PDF-документах будут присутствовать тексты на русском языке. Поддержка мультиязычности в рамках текущего проекта не предполагается', signal=None)
+BAResponse(ba_text='Какие существуют типичные ошибки или проблемы в текущих коммуникациях менеджеров с клиентами, которые цифровой наставник должен выявлять и исправлять в первую очередь?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='Сейчас у нас нет такой информации. В рамках данного проекта это потребуется выяснить в рамках ревью с нашимы специалистами по данному вопросу.', signal=None)
+BAResponse(ba_text='Какие временные рамки установлены для реализации MVP цифрового наставника, и каковы приоритеты этапов разработки (создание графа знаний, обучение модели, тестирование и внедрение)?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='На разработку MVP выделяется 6 месяцев. Приоритетом является проектирование и разработка графа знаний, который сможет поддерживать оговоренные выше функции', signal=None)
+BAResponse(ba_text='Какие ресурсы (вычислительные мощности, программное обеспечение, специалисты) будут предоставлены для реализации проекта в указанные сроки, и есть ли необходимость привлечения дополнительных ресурсов?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text=None, signal=<WeakGlobalSignal.next_stage: 0>)
+BAResponse(ba_text='Уточнение деталей предметной области завершено.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Приступаю к уточнению пользовательских историй.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Начинаю извлечение пользовательских историй на основе предоставленной информации.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Извлечено пользовательских историй: 5.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости, редактировать, добавлять или удалять пользовательские истории.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.add: 6>, shortcut='Добавить user-историю', description=None), SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить user-историю', description=None), SignalInfo(signal=<WeakStateSignal.edit: 8>, shortcut='Изменить user-историю', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{'14b77': UserStory(id='14b77',
+                    statement='Руководитель подразделения оценивает результаты '
+                              'работы цифрового наставника, используя '
+                              'показатели точности (F1-score и Exact Match), '
+                              'чтобы убедиться в повышении качества '
+                              'обслуживания клиентов.',
+                    related_scenario_ids=[]),
+ '2d36c': UserStory(id='2d36c',
+                    statement='Менеджер технической поддержки получает '
+                              'рекомендацию от цифрового наставника '
+                              'относительно возможных вариантов ответа на '
+                              'запрос клиента, чтобы обеспечить высокое '
+                              'качество обслуживания.',
+                    related_scenario_ids=[]),
+ 'adeec': UserStory(id='adeec',
+                    statement='Специалист отдела аналитики загружает новые '
+                              'данные в систему цифрового наставника для '
+                              'обновления графа знаний, чтобы поддерживать '
+                              'актуальность рекомендаций и проверок.',
+                    related_scenario_ids=[]),
+ 'f8230': UserStory(id='f8230',
+                    statement='Менеджер технической поддержки использует '
+                              'цифрового наставника для проверки правильности '
+                              'своего ответа клиенту, чтобы избежать '
+                              'предоставления некорректной информации и '
+                              'улучшить взаимодействие с клиентом.',
+                    related_scenario_ids=[]),
+ 'fae80': UserStory(id='fae80',
+                    statement='Разработчики настраивают параметры цифрового '
+                              'наставника, интегрируя различные источники '
+                              'данных и обучая модель на их основе, чтобы '
+                              'оптимизировать производительность и точность '
+                              'рекомендаций наставника.',
+                    related_scenario_ids=[])}
+UserResponse(user_text=None, signal=<WeakGlobalSignal.next_stage: 0>)
+BAResponse(ba_text='Уточнение пользовательских историй завершено.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Начинаю извлечение ролей из пользовательских историй.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Извлечение завершено. Обнаружено ролей: 5.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Операция по извлечению ролей завершена.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Приступаю к уточнению поддерживаемых сценариев.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+{}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='2d36c', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Получить Рекомендацию Ответа (СИ# 5e253)\n1. Система обрабатывает введённый текст и извлекает ключевые элементы запроса\n2. Цифровой наставник формирует набор рекомендаций по возможным вариантам ответа на основании извлечённых ключевых элементов и доступного графа знаний\n3. Система отображает сформированные рекомендации менеджеру технической поддержки\n4. Менеджер выбирает подходящий ответ из предложенных рекомендаций или редактирует его под свои нужды\n5. После выбора или редактирования менеджер отправляет окончательный ответ клиенту через систему цифровой связи банка', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценарий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+UserResponse(user_text=None, signal=<WeakStateSignal.approve: 4>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{'5e253': Scenario(id='5e253',
+                   statement=None,
+                   title='Получить Рекомендацию Ответа',
+                   steps=['Система обрабатывает введённый текст и извлекает '
+                          'ключевые элементы запроса',
+                          'Цифровой наставник формирует набор рекомендаций по '
+                          'возможным вариантам ответа на основании извлечённых '
+                          'ключевых элементов и доступного графа знаний',
+                          'Система отображает сформированные рекомендации '
+                          'менеджеру технической поддержки',
+                          'Менеджер выбирает подходящий ответ из предложенных '
+                          'рекомендаций или редактирует его под свои нужды',
+                          'После выбора или редактирования менеджер отправляет '
+                          'окончательный ответ клиенту через систему цифровой '
+                          'связи банка'],
+                   related_userstory_ids=['2d36c'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='f8230', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Проверять Ответы Менеджеров (СИ# 2ccfb)\n1. Система принимает введенный текст и начинает процесс обработки запроса\n2. Цифровой наставник проводит семантический анализ введённого ответа менеджера\n3. Система сравнивает полученный ответ с базой знаний и правилами предоставления информации\n4. Если цифровой наставник обнаруживает несоответствие или потенциальные ошибки в ответе, он формирует рекомендацию менеджеру о корректировке ответа\n5. Система отображает результат проверки и рекомендации менеджеру технической поддержки\n6. Менеджер изучает полученные рекомендации и при необходимости редактирует свой ответ\n7. После внесения изменений менеджер повторно отправляет изменённый ответ цифровому наставнику для повторной проверки\n8. Система подтверждает правильность скорректированного ответа или предлагает дополнительные улучшения\n9. Когда проверка завершена успешно, цифровой наставник уведомляет менеджера о готовности ответа для отправки клиенту', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценарий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+UserResponse(user_text=None, signal=<WeakStateSignal.approve: 4>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{'2ccfb': Scenario(id='2ccfb',
+                   statement=None,
+                   title='Проверять Ответы Менеджеров',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс обработки запроса',
+                          'Цифровой наставник проводит семантический анализ '
+                          'введённого ответа менеджера',
+                          'Система сравнивает полученный ответ с базой знаний '
+                          'и правилами предоставления информации',
+                          'Если цифровой наставник обнаруживает несоответствие '
+                          'или потенциальные ошибки в ответе, он формирует '
+                          'рекомендацию менеджеру о корректировке ответа',
+                          'Система отображает результат проверки и '
+                          'рекомендации менеджеру технической поддержки',
+                          'Менеджер изучает полученные рекомендации и при '
+                          'необходимости редактирует свой ответ',
+                          'После внесения изменений менеджер повторно '
+                          'отправляет изменённый ответ цифровому наставнику '
+                          'для повторной проверки',
+                          'Система подтверждает правильность '
+                          'скорректированного ответа или предлагает '
+                          'дополнительные улучшения',
+                          'Когда проверка завершена успешно, цифровой '
+                          'наставник уведомляет менеджера о готовности ответа '
+                          'для отправки клиенту'],
+                   related_userstory_ids=['f8230']),
+ '5e253': Scenario(id='5e253',
+                   statement=None,
+                   title='Получить Рекомендацию Ответа',
+                   steps=['Система обрабатывает введённый текст и извлекает '
+                          'ключевые элементы запроса',
+                          'Цифровой наставник формирует набор рекомендаций по '
+                          'возможным вариантам ответа на основании извлечённых '
+                          'ключевых элементов и доступного графа знаний',
+                          'Система отображает сформированные рекомендации '
+                          'менеджеру технической поддержки',
+                          'Менеджер выбирает подходящий ответ из предложенных '
+                          'рекомендаций или редактирует его под свои нужды',
+                          'После выбора или редактирования менеджер отправляет '
+                          'окончательный ответ клиенту через систему цифровой '
+                          'связи банка'],
+                   related_userstory_ids=['2d36c'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='adeec', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Обновлять Граф Знаний (СИ# 4b33e)\n1. Система предоставляет специалисту возможность выбрать тип загружаемых данных (структурированные или слабо структурированные)\n2. Специалист выбирает соответствующий тип данных\n3. Система отображает форму для выбора файла или ввода данных вручную\n4. Специалист загружает файл или вводит данные вручную\n5. Система начинает процесс обработки и проверки корректности загруженных данных\n6. После завершения проверки система уведомляет специалиста о результатах (успешно обработано / обнаружены ошибки)\n7. Если обнаружены ошибки, специалист исправляет их и повторяет загрузку\n8. При успешной обработке система обновляет граф знаний новыми данными\n9. Система информирует специалиста об успешном завершении процесса обновления графа знаний', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценарий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+UserResponse(user_text=None, signal=<WeakStateSignal.approve: 4>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{'2ccfb': Scenario(id='2ccfb',
+                   statement=None,
+                   title='Проверять Ответы Менеджеров',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс обработки запроса',
+                          'Цифровой наставник проводит семантический анализ '
+                          'введённого ответа менеджера',
+                          'Система сравнивает полученный ответ с базой знаний '
+                          'и правилами предоставления информации',
+                          'Если цифровой наставник обнаруживает несоответствие '
+                          'или потенциальные ошибки в ответе, он формирует '
+                          'рекомендацию менеджеру о корректировке ответа',
+                          'Система отображает результат проверки и '
+                          'рекомендации менеджеру технической поддержки',
+                          'Менеджер изучает полученные рекомендации и при '
+                          'необходимости редактирует свой ответ',
+                          'После внесения изменений менеджер повторно '
+                          'отправляет изменённый ответ цифровому наставнику '
+                          'для повторной проверки',
+                          'Система подтверждает правильность '
+                          'скорректированного ответа или предлагает '
+                          'дополнительные улучшения',
+                          'Когда проверка завершена успешно, цифровой '
+                          'наставник уведомляет менеджера о готовности ответа '
+                          'для отправки клиенту'],
+                   related_userstory_ids=['f8230']),
+ '4b33e': Scenario(id='4b33e',
+                   statement=None,
+                   title='Обновлять Граф Знаний',
+                   steps=['Система предоставляет специалисту возможность '
+                          'выбрать тип загружаемых данных (структурированные '
+                          'или слабо структурированные)',
+                          'Специалист выбирает соответствующий тип данных',
+                          'Система отображает форму для выбора файла или ввода '
+                          'данных вручную',
+                          'Специалист загружает файл или вводит данные вручную',
+                          'Система начинает процесс обработки и проверки '
+                          'корректности загруженных данных',
+                          'После завершения проверки система уведомляет '
+                          'специалиста о результатах (успешно обработано / '
+                          'обнаружены ошибки)',
+                          'Если обнаружены ошибки, специалист исправляет их и '
+                          'повторяет загрузку',
+                          'При успешной обработке система обновляет граф '
+                          'знаний новыми данными',
+                          'Система информирует специалиста об успешном '
+                          'завершении процесса обновления графа знаний'],
+                   related_userstory_ids=['adeec']),
+ '5e253': Scenario(id='5e253',
+                   statement=None,
+                   title='Получить Рекомендацию Ответа',
+                   steps=['Система обрабатывает введённый текст и извлекает '
+                          'ключевые элементы запроса',
+                          'Цифровой наставник формирует набор рекомендаций по '
+                          'возможным вариантам ответа на основании извлечённых '
+                          'ключевых элементов и доступного графа знаний',
+                          'Система отображает сформированные рекомендации '
+                          'менеджеру технической поддержки',
+                          'Менеджер выбирает подходящий ответ из предложенных '
+                          'рекомендаций или редактирует его под свои нужды',
+                          'После выбора или редактирования менеджер отправляет '
+                          'окончательный ответ клиенту через систему цифровой '
+                          'связи банка'],
+                   related_userstory_ids=['2d36c'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='2d36c', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Получить Рекомендованный Ответ (СИ# 8b136)\n1. Система обрабатывает введенный текст и извлекает ключевые элементы запроса\n2. Менеджер выбирает категорию запроса из предложенных системой вариантов\n3. Система формирует рекомендованные варианты ответов на основании извлеченной информации и выбранной категории\n4. Менеджер просматривает предложенные варианты рекомендаций\n5. Система предоставляет возможность менеджеру выбрать один из предложенных вариантов или создать собственный ответ\n6. Если менеджер выбирает вариант из предложенных, система отображает выбранный ответ\n7. Если менеджер создает собственный ответ, система предлагает дополнительные уточнения или улучшения на основе введённого текста\n8. После выбора окончательного варианта ответа, система сохраняет его в истории взаимодействий менеджера с клиентом\n9. Менеджер подтверждает отправку ответа клиенту через систему цифровой связи банка', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценарий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+UserResponse(user_text=None, signal=<WeakStateSignal.approve: 4>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{'2ccfb': Scenario(id='2ccfb',
+                   statement=None,
+                   title='Проверять Ответы Менеджеров',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс обработки запроса',
+                          'Цифровой наставник проводит семантический анализ '
+                          'введённого ответа менеджера',
+                          'Система сравнивает полученный ответ с базой знаний '
+                          'и правилами предоставления информации',
+                          'Если цифровой наставник обнаруживает несоответствие '
+                          'или потенциальные ошибки в ответе, он формирует '
+                          'рекомендацию менеджеру о корректировке ответа',
+                          'Система отображает результат проверки и '
+                          'рекомендации менеджеру технической поддержки',
+                          'Менеджер изучает полученные рекомендации и при '
+                          'необходимости редактирует свой ответ',
+                          'После внесения изменений менеджер повторно '
+                          'отправляет изменённый ответ цифровому наставнику '
+                          'для повторной проверки',
+                          'Система подтверждает правильность '
+                          'скорректированного ответа или предлагает '
+                          'дополнительные улучшения',
+                          'Когда проверка завершена успешно, цифровой '
+                          'наставник уведомляет менеджера о готовности ответа '
+                          'для отправки клиенту'],
+                   related_userstory_ids=['f8230']),
+ '4b33e': Scenario(id='4b33e',
+                   statement=None,
+                   title='Обновлять Граф Знаний',
+                   steps=['Система предоставляет специалисту возможность '
+                          'выбрать тип загружаемых данных (структурированные '
+                          'или слабо структурированные)',
+                          'Специалист выбирает соответствующий тип данных',
+                          'Система отображает форму для выбора файла или ввода '
+                          'данных вручную',
+                          'Специалист загружает файл или вводит данные вручную',
+                          'Система начинает процесс обработки и проверки '
+                          'корректности загруженных данных',
+                          'После завершения проверки система уведомляет '
+                          'специалиста о результатах (успешно обработано / '
+                          'обнаружены ошибки)',
+                          'Если обнаружены ошибки, специалист исправляет их и '
+                          'повторяет загрузку',
+                          'При успешной обработке система обновляет граф '
+                          'знаний новыми данными',
+                          'Система информирует специалиста об успешном '
+                          'завершении процесса обновления графа знаний'],
+                   related_userstory_ids=['adeec']),
+ '5e253': Scenario(id='5e253',
+                   statement=None,
+                   title='Получить Рекомендацию Ответа',
+                   steps=['Система обрабатывает введённый текст и извлекает '
+                          'ключевые элементы запроса',
+                          'Цифровой наставник формирует набор рекомендаций по '
+                          'возможным вариантам ответа на основании извлечённых '
+                          'ключевых элементов и доступного графа знаний',
+                          'Система отображает сформированные рекомендации '
+                          'менеджеру технической поддержки',
+                          'Менеджер выбирает подходящий ответ из предложенных '
+                          'рекомендаций или редактирует его под свои нужды',
+                          'После выбора или редактирования менеджер отправляет '
+                          'окончательный ответ клиенту через систему цифровой '
+                          'связи банка'],
+                   related_userstory_ids=['2d36c']),
+ '8b136': Scenario(id='8b136',
+                   statement=None,
+                   title='Получить Рекомендованный Ответ',
+                   steps=['Система обрабатывает введенный текст и извлекает '
+                          'ключевые элементы запроса',
+                          'Менеджер выбирает категорию запроса из предложенных '
+                          'системой вариантов',
+                          'Система формирует рекомендованные варианты ответов '
+                          'на основании извлеченной информации и выбранной '
+                          'категории',
+                          'Менеджер просматривает предложенные варианты '
+                          'рекомендаций',
+                          'Система предоставляет возможность менеджеру выбрать '
+                          'один из предложенных вариантов или создать '
+                          'собственный ответ',
+                          'Если менеджер выбирает вариант из предложенных, '
+                          'система отображает выбранный ответ',
+                          'Если менеджер создает собственный ответ, система '
+                          'предлагает дополнительные уточнения или улучшения '
+                          'на основе введённого текста',
+                          'После выбора окончательного варианта ответа, '
+                          'система сохраняет его в истории взаимодействий '
+                          'менеджера с клиентом',
+                          'Менеджер подтверждает отправку ответа клиенту через '
+                          'систему цифровой связи банка'],
+                   related_userstory_ids=['2d36c'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='adeec', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Загружать Новые Данные (СИ# 0af9e)\n1. Система отображает форму для выбора файла или набора файлов\n2. Специалист выбирает файл(ы) с новыми данными\n3. Система начинает процесс предварительной обработки выбранных файлов\n4. Специалист получает уведомление о начале процесса обработки\n5. По завершении предварительной обработки специалист подтверждает корректность обработанных данных\n6. Система инициирует процедуру интеграции новых данных в существующий граф знаний\n7. Специалист наблюдает статус процесса интеграции через специальный индикатор прогресса\n8. После завершения интеграции система уведомляет специалиста об успешном обновлении графа знаний\n9. Специалист просматривает отчет о результатах интеграции, включая количество добавленных и изменённых элементов графа знаний\n10. Если обнаружены ошибки или несоответствия, специалист принимает решение о необходимости повторной загрузки скорректированных данных\n11. При отсутствии ошибок специалист завершает сессию работы с модулем загрузки данных', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценарий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+UserResponse(user_text=None, signal=<WeakStateSignal.approve: 4>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{'0af9e': Scenario(id='0af9e',
+                   statement=None,
+                   title='Загружать Новые Данные',
+                   steps=['Система отображает форму для выбора файла или '
+                          'набора файлов',
+                          'Специалист выбирает файл(ы) с новыми данными',
+                          'Система начинает процесс предварительной обработки '
+                          'выбранных файлов',
+                          'Специалист получает уведомление о начале процесса '
+                          'обработки',
+                          'По завершении предварительной обработки специалист '
+                          'подтверждает корректность обработанных данных',
+                          'Система инициирует процедуру интеграции новых '
+                          'данных в существующий граф знаний',
+                          'Специалист наблюдает статус процесса интеграции '
+                          'через специальный индикатор прогресса',
+                          'После завершения интеграции система уведомляет '
+                          'специалиста об успешном обновлении графа знаний',
+                          'Специалист просматривает отчет о результатах '
+                          'интеграции, включая количество добавленных и '
+                          'изменённых элементов графа знаний',
+                          'Если обнаружены ошибки или несоответствия, '
+                          'специалист принимает решение о необходимости '
+                          'повторной загрузки скорректированных данных',
+                          'При отсутствии ошибок специалист завершает сессию '
+                          'работы с модулем загрузки данных'],
+                   related_userstory_ids=['adeec']),
+ '2ccfb': Scenario(id='2ccfb',
+                   statement=None,
+                   title='Проверять Ответы Менеджеров',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс обработки запроса',
+                          'Цифровой наставник проводит семантический анализ '
+                          'введённого ответа менеджера',
+                          'Система сравнивает полученный ответ с базой знаний '
+                          'и правилами предоставления информации',
+                          'Если цифровой наставник обнаруживает несоответствие '
+                          'или потенциальные ошибки в ответе, он формирует '
+                          'рекомендацию менеджеру о корректировке ответа',
+                          'Система отображает результат проверки и '
+                          'рекомендации менеджеру технической поддержки',
+                          'Менеджер изучает полученные рекомендации и при '
+                          'необходимости редактирует свой ответ',
+                          'После внесения изменений менеджер повторно '
+                          'отправляет изменённый ответ цифровому наставнику '
+                          'для повторной проверки',
+                          'Система подтверждает правильность '
+                          'скорректированного ответа или предлагает '
+                          'дополнительные улучшения',
+                          'Когда проверка завершена успешно, цифровой '
+                          'наставник уведомляет менеджера о готовности ответа '
+                          'для отправки клиенту'],
+                   related_userstory_ids=['f8230']),
+ '4b33e': Scenario(id='4b33e',
+                   statement=None,
+                   title='Обновлять Граф Знаний',
+                   steps=['Система предоставляет специалисту возможность '
+                          'выбрать тип загружаемых данных (структурированные '
+                          'или слабо структурированные)',
+                          'Специалист выбирает соответствующий тип данных',
+                          'Система отображает форму для выбора файла или ввода '
+                          'данных вручную',
+                          'Специалист загружает файл или вводит данные вручную',
+                          'Система начинает процесс обработки и проверки '
+                          'корректности загруженных данных',
+                          'После завершения проверки система уведомляет '
+                          'специалиста о результатах (успешно обработано / '
+                          'обнаружены ошибки)',
+                          'Если обнаружены ошибки, специалист исправляет их и '
+                          'повторяет загрузку',
+                          'При успешной обработке система обновляет граф '
+                          'знаний новыми данными',
+                          'Система информирует специалиста об успешном '
+                          'завершении процесса обновления графа знаний'],
+                   related_userstory_ids=['adeec']),
+ '5e253': Scenario(id='5e253',
+                   statement=None,
+                   title='Получить Рекомендацию Ответа',
+                   steps=['Система обрабатывает введённый текст и извлекает '
+                          'ключевые элементы запроса',
+                          'Цифровой наставник формирует набор рекомендаций по '
+                          'возможным вариантам ответа на основании извлечённых '
+                          'ключевых элементов и доступного графа знаний',
+                          'Система отображает сформированные рекомендации '
+                          'менеджеру технической поддержки',
+                          'Менеджер выбирает подходящий ответ из предложенных '
+                          'рекомендаций или редактирует его под свои нужды',
+                          'После выбора или редактирования менеджер отправляет '
+                          'окончательный ответ клиенту через систему цифровой '
+                          'связи банка'],
+                   related_userstory_ids=['2d36c']),
+ '8b136': Scenario(id='8b136',
+                   statement=None,
+                   title='Получить Рекомендованный Ответ',
+                   steps=['Система обрабатывает введенный текст и извлекает '
+                          'ключевые элементы запроса',
+                          'Менеджер выбирает категорию запроса из предложенных '
+                          'системой вариантов',
+                          'Система формирует рекомендованные варианты ответов '
+                          'на основании извлеченной информации и выбранной '
+                          'категории',
+                          'Менеджер просматривает предложенные варианты '
+                          'рекомендаций',
+                          'Система предоставляет возможность менеджеру выбрать '
+                          'один из предложенных вариантов или создать '
+                          'собственный ответ',
+                          'Если менеджер выбирает вариант из предложенных, '
+                          'система отображает выбранный ответ',
+                          'Если менеджер создает собственный ответ, система '
+                          'предлагает дополнительные уточнения или улучшения '
+                          'на основе введённого текста',
+                          'После выбора окончательного варианта ответа, '
+                          'система сохраняет его в истории взаимодействий '
+                          'менеджера с клиентом',
+                          'Менеджер подтверждает отправку ответа клиенту через '
+                          'систему цифровой связи банка'],
+                   related_userstory_ids=['2d36c'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+UserResponse(user_text='f8230', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Проверять Корректность Ответа (СИ# c4ece)\n1. Система принимает введённый ответ и начинает его обработку\n2. Цифровой наставник сравнивает полученный ответ менеджера с данными из графа знаний и установленными правилами корректности\n3. Если цифровой наставник обнаруживает несоответствие или ошибку в ответе, он формирует рекомендацию по исправлению ошибки\n4. Система отображает менеджеру результат проверки: подтверждение корректности ответа или рекомендацию по изменению\n5. При необходимости менеджер изменяет свой ответ, следуя рекомендациям цифрового наставника\n6. После внесения изменений менеджер повторно инициирует проверку ответа через интерфейс цифрового наставника\n7. Цифровой наставник подтверждает правильность окончательной версии ответа\n8. Менеджер отправляет проверенный и подтверждённый ответ клиенту', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценарий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+UserResponse(user_text=None, signal=<WeakStateSignal.approve: 4>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{'0af9e': Scenario(id='0af9e',
+                   statement=None,
+                   title='Загружать Новые Данные',
+                   steps=['Система отображает форму для выбора файла или '
+                          'набора файлов',
+                          'Специалист выбирает файл(ы) с новыми данными',
+                          'Система начинает процесс предварительной обработки '
+                          'выбранных файлов',
+                          'Специалист получает уведомление о начале процесса '
+                          'обработки',
+                          'По завершении предварительной обработки специалист '
+                          'подтверждает корректность обработанных данных',
+                          'Система инициирует процедуру интеграции новых '
+                          'данных в существующий граф знаний',
+                          'Специалист наблюдает статус процесса интеграции '
+                          'через специальный индикатор прогресса',
+                          'После завершения интеграции система уведомляет '
+                          'специалиста об успешном обновлении графа знаний',
+                          'Специалист просматривает отчет о результатах '
+                          'интеграции, включая количество добавленных и '
+                          'изменённых элементов графа знаний',
+                          'Если обнаружены ошибки или несоответствия, '
+                          'специалист принимает решение о необходимости '
+                          'повторной загрузки скорректированных данных',
+                          'При отсутствии ошибок специалист завершает сессию '
+                          'работы с модулем загрузки данных'],
+                   related_userstory_ids=['adeec']),
+ '2ccfb': Scenario(id='2ccfb',
+                   statement=None,
+                   title='Проверять Ответы Менеджеров',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс обработки запроса',
+                          'Цифровой наставник проводит семантический анализ '
+                          'введённого ответа менеджера',
+                          'Система сравнивает полученный ответ с базой знаний '
+                          'и правилами предоставления информации',
+                          'Если цифровой наставник обнаруживает несоответствие '
+                          'или потенциальные ошибки в ответе, он формирует '
+                          'рекомендацию менеджеру о корректировке ответа',
+                          'Система отображает результат проверки и '
+                          'рекомендации менеджеру технической поддержки',
+                          'Менеджер изучает полученные рекомендации и при '
+                          'необходимости редактирует свой ответ',
+                          'После внесения изменений менеджер повторно '
+                          'отправляет изменённый ответ цифровому наставнику '
+                          'для повторной проверки',
+                          'Система подтверждает правильность '
+                          'скорректированного ответа или предлагает '
+                          'дополнительные улучшения',
+                          'Когда проверка завершена успешно, цифровой '
+                          'наставник уведомляет менеджера о готовности ответа '
+                          'для отправки клиенту'],
+                   related_userstory_ids=['f8230']),
+ '4b33e': Scenario(id='4b33e',
+                   statement=None,
+                   title='Обновлять Граф Знаний',
+                   steps=['Система предоставляет специалисту возможность '
+                          'выбрать тип загружаемых данных (структурированные '
+                          'или слабо структурированные)',
+                          'Специалист выбирает соответствующий тип данных',
+                          'Система отображает форму для выбора файла или ввода '
+                          'данных вручную',
+                          'Специалист загружает файл или вводит данные вручную',
+                          'Система начинает процесс обработки и проверки '
+                          'корректности загруженных данных',
+                          'После завершения проверки система уведомляет '
+                          'специалиста о результатах (успешно обработано / '
+                          'обнаружены ошибки)',
+                          'Если обнаружены ошибки, специалист исправляет их и '
+                          'повторяет загрузку',
+                          'При успешной обработке система обновляет граф '
+                          'знаний новыми данными',
+                          'Система информирует специалиста об успешном '
+                          'завершении процесса обновления графа знаний'],
+                   related_userstory_ids=['adeec']),
+ '5e253': Scenario(id='5e253',
+                   statement=None,
+                   title='Получить Рекомендацию Ответа',
+                   steps=['Система обрабатывает введённый текст и извлекает '
+                          'ключевые элементы запроса',
+                          'Цифровой наставник формирует набор рекомендаций по '
+                          'возможным вариантам ответа на основании извлечённых '
+                          'ключевых элементов и доступного графа знаний',
+                          'Система отображает сформированные рекомендации '
+                          'менеджеру технической поддержки',
+                          'Менеджер выбирает подходящий ответ из предложенных '
+                          'рекомендаций или редактирует его под свои нужды',
+                          'После выбора или редактирования менеджер отправляет '
+                          'окончательный ответ клиенту через систему цифровой '
+                          'связи банка'],
+                   related_userstory_ids=['2d36c']),
+ '8b136': Scenario(id='8b136',
+                   statement=None,
+                   title='Получить Рекомендованный Ответ',
+                   steps=['Система обрабатывает введенный текст и извлекает '
+                          'ключевые элементы запроса',
+                          'Менеджер выбирает категорию запроса из предложенных '
+                          'системой вариантов',
+                          'Система формирует рекомендованные варианты ответов '
+                          'на основании извлеченной информации и выбранной '
+                          'категории',
+                          'Менеджер просматривает предложенные варианты '
+                          'рекомендаций',
+                          'Система предоставляет возможность менеджеру выбрать '
+                          'один из предложенных вариантов или создать '
+                          'собственный ответ',
+                          'Если менеджер выбирает вариант из предложенных, '
+                          'система отображает выбранный ответ',
+                          'Если менеджер создает собственный ответ, система '
+                          'предлагает дополнительные уточнения или улучшения '
+                          'на основе введённого текста',
+                          'После выбора окончательного варианта ответа, '
+                          'система сохраняет его в истории взаимодействий '
+                          'менеджера с клиентом',
+                          'Менеджер подтверждает отправку ответа клиенту через '
+                          'систему цифровой связи банка'],
+                   related_userstory_ids=['2d36c']),
+ 'c4ece': Scenario(id='c4ece',
+                   statement=None,
+                   title='Проверять Корректность Ответа',
+                   steps=['Система принимает введённый ответ и начинает его '
+                          'обработку',
+                          'Цифровой наставник сравнивает полученный ответ '
+                          'менеджера с данными из графа знаний и '
+                          'установленными правилами корректности',
+                          'Если цифровой наставник обнаруживает несоответствие '
+                          'или ошибку в ответе, он формирует рекомендацию по '
+                          'исправлению ошибки',
+                          'Система отображает менеджеру результат проверки: '
+                          'подтверждение корректности ответа или рекомендацию '
+                          'по изменению',
+                          'При необходимости менеджер изменяет свой ответ, '
+                          'следуя рекомендациям цифрового наставника',
+                          'После внесения изменений менеджер повторно '
+                          'инициирует проверку ответа через интерфейс '
+                          'цифрового наставника',
+                          'Цифровой наставник подтверждает правильность '
+                          'окончательной версии ответа',
+                          'Менеджер отправляет проверенный и подтверждённый '
+                          'ответ клиенту'],
+                   related_userstory_ids=['f8230'])}
+UserResponse(user_text=None, signal=<WeakGlobalSignal.next_stage: 0>)
+BAResponse(ba_text='Уточнение сценариев завершено.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Начинаю извлечение функциональных требований.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Извлечение завершено. Обнаружено функциональных требований: 49.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+{'3721d': FunctionalRequirementGroup(id='3721d',
+                                     title='Поддержка специалистов',
+                                     grouped_funcreq_ids=['74786',
+                                                          'cfe7b',
+                                                          '08168',
+                                                          '77b6d',
+                                                          '792b5',
+                                                          '3e3cc',
+                                                          '0e4f4']),
+ '48036': FunctionalRequirementGroup(id='48036',
+                                     title='Контроль и проверка информации',
+                                     grouped_funcreq_ids=['884c8',
+                                                          '46d2b',
+                                                          '56d1a',
+                                                          '21021',
+                                                          '7469f',
+                                                          '6265c',
+                                                          '3ca8d',
+                                                          '809e1',
+                                                          '0dcc4']),
+ 'aec99': FunctionalRequirementGroup(id='aec99',
+                                     title='Работа с запросами и ответами',
+                                     grouped_funcreq_ids=['b948b',
+                                                          '5d22f',
+                                                          '98a46',
+                                                          'ae6cb',
+                                                          'ee101',
+                                                          'd166b',
+                                                          '16e60',
+                                                          '4e7a7',
+                                                          '9146e',
+                                                          '49a4f',
+                                                          'a00da',
+                                                          '61019',
+                                                          '2140e',
+                                                          'f872c']),
+ 'cc295': FunctionalRequirementGroup(id='cc295',
+                                     title='Мониторинг и отчетность',
+                                     grouped_funcreq_ids=['21f6d',
+                                                          'c03c7',
+                                                          '1f4bf',
+                                                          '92f88',
+                                                          '50e75',
+                                                          '9b3cc']),
+ 'd6fd8': FunctionalRequirementGroup(id='d6fd8',
+                                     title='Управление данными и знаниями',
+                                     grouped_funcreq_ids=['24fbf',
+                                                          '376fb',
+                                                          '687c3',
+                                                          'dc7c4',
+                                                          '46ac5',
+                                                          '0f8d9',
+                                                          'dd69f',
+                                                          'bb1d6',
+                                                          'e89dc',
+                                                          '6fecb',
+                                                          '92f13',
+                                                          '1c6f5',
+                                                          'e8d69'])}
+{'08168': FunctionalRequirement(id='08168',
+                                statement='Рекомендации и результаты проверки '
+                                          'отображаются в интерфейсе системы '
+                                          'понятным и четким образом, '
+                                          'исключающим двусмысленность '
+                                          'восприятия информации менеджером.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '0dcc4': FunctionalRequirement(id='0dcc4',
+                                statement='После успешной проверки цифровой '
+                                          'наставник должен информировать '
+                                          'пользователя о готовности ответа к '
+                                          'передаче клиенту.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '0e4f4': FunctionalRequirement(id='0e4f4',
+                                statement='Если система обнаруживает ошибки в '
+                                          'загружаемых данных, она '
+                                          'предоставляет специалисту '
+                                          'техническую поддержку возможность '
+                                          'внести необходимые исправления и '
+                                          'осуществить повторную попытку '
+                                          'загрузки данных.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '0f8d9': FunctionalRequirement(id='0f8d9',
+                                statement='Перед началом интеграции новые '
+                                          'данные проходят предварительную '
+                                          'проверку на корректность формата и '
+                                          'структуру, результаты которой '
+                                          'отображаются пользователю.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '16e60': FunctionalRequirement(id='16e60',
+                                statement='Перед подтверждением ответа система '
+                                          'должна повторно проанализировать '
+                                          'его соответствие внутренним '
+                                          'стандартам и рекомендациям, при '
+                                          'необходимости предлагая '
+                                          'дополнительные уточнения или '
+                                          'исправления.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '1c6f5': FunctionalRequirement(id='1c6f5',
+                                statement='Предобработка данных включает '
+                                          'обязательную проверку правильности '
+                                          'формата и структуры данных перед их '
+                                          'включением в граф знаний.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '1f4bf': FunctionalRequirement(id='1f4bf',
+                                statement='Каждый отчёт мониторинга должен '
+                                          'включать следующие обязательные '
+                                          'разделы: дата и время проведения '
+                                          'мониторинга, общее количество '
+                                          'обработанных запросов, количество '
+                                          'успешных и неуспешных операций, '
+                                          'перечень ошибок с указанием типа '
+                                          'ошибки и её краткого описания, '
+                                          'рекомендации по устранению '
+                                          'выявленных проблем.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '21021': FunctionalRequirement(id='21021',
+                                statement='Цифровой наставник обязан '
+                                          'осуществлять семантический анализ '
+                                          'текста ответа агента перед его '
+                                          'отправкой клиенту.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '2140e': FunctionalRequirement(id='2140e',
+                                statement='Ответы, прошедшие финальную '
+                                          'проверку и подтверждение со стороны '
+                                          'менеджера, сохраняются в базу '
+                                          'данных взаимодействий для '
+                                          'последующего использования и '
+                                          'анализа.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '21f6d': FunctionalRequirement(id='21f6d',
+                                statement='Система должна автоматически '
+                                          'генерировать отчёты о мониторинге '
+                                          'после каждой успешной или неудачной '
+                                          'интеграции, включающие полную '
+                                          'информацию обо всех выявленных '
+                                          'ошибках и отклонениях от '
+                                          'установленных критериев '
+                                          'корректности работы.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '24fbf': FunctionalRequirement(id='24fbf',
+                                statement='Каждое действие пользователя и '
+                                          'цифровой системы при обработке '
+                                          'запросов и предоставлении '
+                                          'рекомендаций фиксируется в журнале '
+                                          'событий для дальнейшего анализа и '
+                                          'совершенствования функционала '
+                                          'цифрового наставника.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '376fb': FunctionalRequirement(id='376fb',
+                                statement='Любые изменения состояния графа '
+                                          'знаний, инициированные действиями '
+                                          'пользователя или автоматической '
+                                          'обработкой данных, регистрируются в '
+                                          'системе ведения журнала изменений.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '3ca8d': FunctionalRequirement(id='3ca8d',
+                                statement='Система должна сравнивать текст '
+                                          'ответа с актуальными сведениями из '
+                                          'базы знаний и утвержденными '
+                                          'критериями правильности информации.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '3e3cc': FunctionalRequirement(id='3e3cc',
+                                statement='Процесс работы специалиста с '
+                                          'модулем загрузки данных завершается '
+                                          'только после успешной интеграции '
+                                          'данных или осознанного выбора '
+                                          'специалистом варианта повторной '
+                                          'загрузки.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '46ac5': FunctionalRequirement(id='46ac5',
+                                statement='Интерфейс загрузки данных позволяет '
+                                          'специалистам аналитического отдела '
+                                          'одновременно добавлять один или '
+                                          'несколько файлов различного '
+                                          'формата.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '46d2b': FunctionalRequirement(id='46d2b',
+                                statement='На каждом этапе процесса проверки и '
+                                          'редактирования ответа цифровая '
+                                          'система обязана сохранять записи о '
+                                          'действиях пользователя и '
+                                          'результатах проверок для '
+                                          'дальнейшего использования при '
+                                          'анализе и аудите.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '49a4f': FunctionalRequirement(id='49a4f',
+                                statement='В случае самостоятельного ввода '
+                                          'менеджером ответа система '
+                                          'предлагает возможные дополнения или '
+                                          'улучшения на основе текущего '
+                                          'состояния графа знаний и ранее '
+                                          'принятых решений.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '4e7a7': FunctionalRequirement(id='4e7a7',
+                                statement='Все действия менеджера по обработке '
+                                          'запросов и формированию ответов '
+                                          'фиксируются в истории '
+                                          'взаимодействий с каждым отдельным '
+                                          'клиентом.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '50e75': FunctionalRequirement(id='50e75',
+                                statement='Все изменения настроек мониторинга '
+                                          'и отчетности должны фиксироваться в '
+                                          'журнале аудита с указанием даты, '
+                                          'времени и пользователя, внесшего '
+                                          'изменения.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '56d1a': FunctionalRequirement(id='56d1a',
+                                statement='Если цифровой наставник выявляет '
+                                          'несоответствие или ошибку в ответе, '
+                                          'он должен автоматически создавать '
+                                          'конкретные рекомендации по их '
+                                          'устранению и отображать их '
+                                          'пользователю.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '5d22f': FunctionalRequirement(id='5d22f',
+                                statement='Система должна автоматически '
+                                          'извлекать ключевые элементы из '
+                                          'каждого полученного сообщения '
+                                          'клиента и передавать их цифровому '
+                                          'наставнику для формирования '
+                                          'рекомендаций.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '61019': FunctionalRequirement(id='61019',
+                                statement='Каждый этап обработки запроса и '
+                                          'формирования ответа подлежит '
+                                          'проверке на предмет корректности и '
+                                          'согласованности с установленными '
+                                          'правилами и критериями оценки.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '6265c': FunctionalRequirement(id='6265c',
+                                statement='Цифровой наставник обязан '
+                                          'сопоставлять содержание ответа '
+                                          'агента с актуальной версией графа '
+                                          'знаний и действующими правилами '
+                                          'корректности предоставляемой '
+                                          'информации.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '687c3': FunctionalRequirement(id='687c3',
+                                statement='Пользовательский интерфейс '
+                                          'предоставляет возможность выбора '
+                                          'способа добавления новых данных: '
+                                          'загрузка файла либо ручное внесение '
+                                          'информации через специализированную '
+                                          'форму ввода.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '6fecb': FunctionalRequirement(id='6fecb',
+                                statement='В случае обнаружения несоответствия '
+                                          'форматам или структурам данных '
+                                          'система сообщает пользователю о '
+                                          'возникших ошибках и блокирует '
+                                          'дальнейшую интеграцию некорректных '
+                                          'данных.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '7469f': FunctionalRequirement(id='7469f',
+                                statement='В случае выявления потенциальной '
+                                          'ошибки или неточности цифровой '
+                                          'наставник должен автоматически '
+                                          'предлагать агенту варианты '
+                                          'исправления ответа.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '74786': FunctionalRequirement(id='74786',
+                                statement='Менеджер технической поддержки '
+                                          'имеет возможность редактировать '
+                                          'свой ответ, используя рекомендации, '
+                                          'предоставляемые системой.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '77b6d': FunctionalRequirement(id='77b6d',
+                                statement='При обнаружении ошибок во время '
+                                          'процесса интеграции данных '
+                                          'специалист технической поддержки '
+                                          'может выполнить повторную загрузку '
+                                          'файлов после их исправления.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '792b5': FunctionalRequirement(id='792b5',
+                                statement='Перед началом процедуры интеграции '
+                                          'специалист подтверждает '
+                                          'корректность предварительно '
+                                          'обработанных данных через интерфейс '
+                                          'системы.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '809e1': FunctionalRequirement(id='809e1',
+                                statement='По завершении всех этапов проверки '
+                                          'цифровой наставник обязан '
+                                          'подтверждать соответствие '
+                                          'финального варианта ответа '
+                                          'установленным требованиям и '
+                                          'стандартам.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '884c8': FunctionalRequirement(id='884c8',
+                                statement='Цифровой наставник должен '
+                                          'предоставлять пользователю '
+                                          'возможность инициирования повторной '
+                                          'проверки ответа после внесения '
+                                          'изменений посредством интерфейса '
+                                          'системы.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '9146e': FunctionalRequirement(id='9146e',
+                                statement='Для удобства работы система должна '
+                                          'предлагать менеджеру категории '
+                                          'запросов на основе предварительно '
+                                          'обработанных текстов, позволяя '
+                                          'быстро классифицировать поступающие '
+                                          'обращения.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '92f13': FunctionalRequirement(id='92f13',
+                                statement='Каждый успешный этап интеграции '
+                                          'сопровождается отчетом о количестве '
+                                          'добавленных и изменённых элементов '
+                                          'графа знаний.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '92f88': FunctionalRequirement(id='92f88',
+                                statement='Пользователи системы должны иметь '
+                                          'возможность настроить периодичность '
+                                          'формирования регулярных отчётов '
+                                          'мониторинга вручную либо выбрать '
+                                          'один из предложенных стандартных '
+                                          'интервалов (ежедневно, еженедельно, '
+                                          'ежемесячно).',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '98a46': FunctionalRequirement(id='98a46',
+                                statement='На основании полученных ключевых '
+                                          'элементов цифровой наставник '
+                                          'формирует набор возможных вариантов '
+                                          'ответов и предоставляет их '
+                                          'менеджеру технической поддержки.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ '9b3cc': FunctionalRequirement(id='9b3cc',
+                                statement='Формат представления информации об '
+                                          'ошибках в отчётах должен позволять '
+                                          'однозначно идентифицировать причину '
+                                          'возникновения проблемы и '
+                                          'предоставлять достаточную '
+                                          'информацию для последующего '
+                                          'устранения ошибки разработчиками.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'a00da': FunctionalRequirement(id='a00da',
+                                statement='Процесс передачи информации между '
+                                          'компонентами системы (от приема '
+                                          'запроса до отправки ответа клиенту) '
+                                          'должен происходить мгновенно и '
+                                          'прозрачно для пользователя.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'ae6cb': FunctionalRequirement(id='ae6cb',
+                                statement='Менеджер технической поддержки '
+                                          'должен иметь возможность '
+                                          'просматривать предлагаемые варианты '
+                                          'ответов и выбирать наиболее '
+                                          'подходящий из них.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'b948b': FunctionalRequirement(id='b948b',
+                                statement='Система должна принимать от '
+                                          'менеджера технической поддержки '
+                                          'текстовые запросы (сообщения '
+                                          'клиентов) и инициировать обработку '
+                                          'этих сообщений.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'bb1d6': FunctionalRequirement(id='bb1d6',
+                                statement='По завершении интеграции нового '
+                                          'фрагмента данных система '
+                                          'информирует специалиста о '
+                                          'результате операции и состоянии '
+                                          'графа знаний.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'c03c7': FunctionalRequirement(id='c03c7',
+                                statement='Сформированные системой отчёты '
+                                          'мониторинга должны быть доступны '
+                                          'всем авторизованным пользователям '
+                                          'через интерфейс веб-приложения и '
+                                          'могут быть экспортированы в '
+                                          'форматах PDF и CSV.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'cfe7b': FunctionalRequirement(id='cfe7b',
+                                statement='После внесения изменений менеджер '
+                                          'получает от системы результат '
+                                          'проверки своего ответа: сообщение о '
+                                          'подтверждении корректности ответа '
+                                          'или перечень рекомендаций по '
+                                          'необходимым изменениям.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'd166b': FunctionalRequirement(id='d166b',
+                                statement='После внесения изменений менеджер '
+                                          'подтверждает окончательную версию '
+                                          'ответа, которая затем передается '
+                                          'системе цифровой связи банка для '
+                                          'отправки клиенту.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'dc7c4': FunctionalRequirement(id='dc7c4',
+                                statement='После начала процесса '
+                                          'предварительной обработки '
+                                          'загружаемых данных пользователь '
+                                          'уведомляется об этом посредством '
+                                          'информационного сообщения.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'dd69f': FunctionalRequirement(id='dd69f',
+                                statement='Если проверка прошла успешно, '
+                                          'система автоматически интегрирует '
+                                          'новые данные в текущий граф знаний.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'e89dc': FunctionalRequirement(id='e89dc',
+                                statement='Во время интеграции новых данных '
+                                          'специалист имеет доступ к '
+                                          'индикатору текущего статуса '
+                                          'процесса.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'e8d69': FunctionalRequirement(id='e8d69',
+                                statement='Результаты каждой попытки '
+                                          'интеграции сохраняются в истории '
+                                          'операций, доступной пользователям с '
+                                          'соответствующими правами доступа.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'ee101': FunctionalRequirement(id='ee101',
+                                statement='Если ни один из предложенных '
+                                          'вариантов не подходит полностью, '
+                                          'менеджер имеет право редактировать '
+                                          'выбранный ответ или создать '
+                                          'собственный ответ вручную.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set()),
+ 'f872c': FunctionalRequirement(id='f872c',
+                                statement='Пользовательский интерфейс системы '
+                                          'должен быть интуитивно понятен и '
+                                          'удобен для ежедневного '
+                                          'использования сотрудниками службы '
+                                          'технической поддержки банка.',
+                                related_userstory_ids=set(),
+                                related_scenarios_ids=set(),
+                                related_frestr_ids=set())}
+BAResponse(ba_text='Операция по извлечению функциональных требований завершена.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Приступаю к добавлению функциональных ограничений.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости, добавить, удалить, отредактировать или получить рекомендацию функционального ограничения.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.add: 6>, shortcut='Добавить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.edit: 8>, shortcut='Изменить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить рекомендацию ограничения', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{}
+UserResponse(user_text=None, signal=<WeakGlobalSignal.next_stage: 0>)
+BAResponse(ba_text='Добавление функциональных ограничений завершено.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Приступаю к формированию системных требований.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Начинаю извлечение системных требований.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Извлечено системных требований: 10.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+{'19db5': SystemRequirement(id='19db5',
+                            statement='Система должна обрабатывать текстовую '
+                                      'информацию исключительно на русском '
+                                      'языке.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ '5ec1f': SystemRequirement(id='5ec1f',
+                            statement='Система должна валидировать ответ '
+                                      'менеджера на предмет корректности '
+                                      'формата коммуникации с клиентом с '
+                                      'высоким значением метрики F1-score.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ '6bf73': SystemRequirement(id='6bf73',
+                            statement='Система должна вносить в граф знаний '
+                                      'сущности и связи из '
+                                      'слабоструктурированных источников без '
+                                      'внесения ошибок.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ '71d4e': SystemRequirement(id='71d4e',
+                            statement='Система должна интегрировать как '
+                                      'структурированную, так и '
+                                      'неструктурированную информацию в граф '
+                                      'знаний одновременно.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ '79ec5': SystemRequirement(id='79ec5',
+                            statement='Система должна использовать архитектуру '
+                                      'внешней памяти агентов, основанную на '
+                                      'графах знаний, аналогичную подходу '
+                                      'AriGraph.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ 'a8fe6': SystemRequirement(id='a8fe6',
+                            statement='Система должна обновлять и изменять '
+                                      'граф знаний с использованием данных из '
+                                      'структурированных источников без '
+                                      'внесения ошибок.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ 'b30aa': SystemRequirement(id='b30aa',
+                            statement='Система должна формировать ответы на '
+                                      'основе построенного графа знаний с '
+                                      'достижением высоких значений метрик '
+                                      'Exact Match (EM) и F1-score.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ 'be2f9': SystemRequirement(id='be2f9',
+                            statement='Система должна верифицировать '
+                                      'фактологическую информацию в ответе '
+                                      'менеджера на основе построенного графа '
+                                      'знаний с высоким значением метрики '
+                                      'F1-score.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ 'dab0d': SystemRequirement(id='dab0d',
+                            statement='Реализация MVP должна быть завершена в '
+                                      'течение шести месяцев с приоритетом '
+                                      'проектирования и разработки графа '
+                                      'знаний.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set()),
+ 'ef6c7': SystemRequirement(id='ef6c7',
+                            statement='Система должна извлекать из '
+                                      'PDF-документов только текстовый '
+                                      'контент, игнорируя таблицы и '
+                                      'изображения, сохраняя структуру '
+                                      'разделов и подзаголовков.',
+                            related_srestr_ids=set(),
+                            related_userstory_ids=set(),
+                            related_scenarios_ids=set())}
+BAResponse(ba_text='Вы можете, при необходимости, редактировать, добавлять или удалять системные требования.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.add: 6>, shortcut='Добавить требование', description=None), SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить требование', description=None), SignalInfo(signal=<WeakStateSignal.edit: 8>, shortcut='Изменить требование', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+UserResponse(user_text=None, signal=<WeakGlobalSignal.next_stage: 0>)
+BAResponse(ba_text='Формирование системных требований завершено.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Приступаю к добавлению системных ограничений', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Вы можете, при необходимости, добавить, удалить, отредактировать системное ограничение или получить рекомендацию ограничения.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.add: 6>, shortcut='Добавить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.edit: 8>, shortcut='Изменить ограничение', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение ограничения', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+{}
+UserResponse(user_text=None, signal=<WeakGlobalSignal.next_stage: 0>)
+BAResponse(ba_text='Добавление системных ограничений завершено.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+BAResponse(ba_text='Процесс формирования технического задания завершён.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)

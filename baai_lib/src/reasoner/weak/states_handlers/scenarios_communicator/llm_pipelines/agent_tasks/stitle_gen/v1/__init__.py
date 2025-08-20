@@ -1,0 +1,1 @@
+from .suite import STITLEGEN_SUITE_V1

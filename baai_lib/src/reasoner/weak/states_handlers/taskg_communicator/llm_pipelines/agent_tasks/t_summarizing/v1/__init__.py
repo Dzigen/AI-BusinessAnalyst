@@ -1,0 +1,1 @@
+from .suite import STSUMM_SUITE_V1
