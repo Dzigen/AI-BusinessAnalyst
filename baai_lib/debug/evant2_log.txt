@@ -1,0 +1,1149 @@
+BAResponse(ba_text='Привет! Я ваш AI Бизнес Аналитик.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Привет! Я ваш AI Бизнес Аналитик.
+BAResponse(ba_text='Давайте начнём формировать техническое задание.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Давайте начнём формировать техническое задание.
+BAResponse(ba_text='Сейчас я задам вам несколько общих вопросов, чтобы лучше понять задачу.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Сейчас я задам вам несколько общих вопросов, чтобы лучше понять задачу.
+BAResponse(ba_text='Опишите вашу задачу простыми словами.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+Опишите вашу задачу простыми словами.
+UserResponse(user_text='Необъодимо разработать цифрового наставника, который анализирует коммуникации менеджера с клиентами Банка, проверяет информацию на основе своей базы знаний (памяти) о продукте и даёт рекомендации. Наставник должен поддерживать обновление и изменение графа знаний, а также обеспечивать валидацию и верификацию ответов менеджеров согласно установленным правилам и критериям оценки.', signal=None)
+BAResponse(ba_text='Какую проблему вы хотите решить с помощью продукта?', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+Какую проблему вы хотите решить с помощью продукта?
+UserResponse(user_text='В Банке разрабатываются системы анализа коммуникаций с клиентами. Среди таких систем создаются цифровые тренажеры для клиентских менеджеров, которые позволяют, отрабатывать навыки работы с клиентами, в том числе работу с возражениями, повышать квалификацию клиентских менеджеров, и в конечном итоге повышать конверсию продаж. Кроме того, системы анализа коммуникаций с клиентами позволяют развивать продукты Банка через обратную связь, включая вопросы, жалобы и предложения, таким образом обобщая клиентский опыт.  Для работы со слабоструктурированной информацией, содержащейся в коммуникациях, необходимы LLM агенты, которые должны понимать семантику сообщений и диалогов. Для того, чтобы такой агент мог накапливать знания, его нужно снабдить внешней памятью. Исследования, в том числе проведенные Сколтехом, показывают, что наиболее эффективным инструментом создания внешней памяти для LLM-агентов являются графы знаний.  Создание такого цифрового тренажера, использующего граф как внешнюю память LLM-агента, позволит значительно повысить качество работы менеджеров с клиентами, снизить отток и повысить лояльность клиентов, и таким образом позволит повысить прибыль Банка.', signal=None)
+BAResponse(ba_text='Какой результат вы ожидаете? (Что должно быть на выходе?)', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+Какой результат вы ожидаете? (Что должно быть на выходе?)
+UserResponse(user_text='Программную библиотеку с следующим фцнкионалом: (1) валидация ответа менеджера в рамках текущей коммуникации с клиентом; (2) корректировка ответа менеджера в зависимости от сделанных ошибок; (3) рекомендация возможного ответа менеджера для клиента в рамках текущей коммуникации; (4) формирование пространства памяти цифрового наставника на основе графов знаний, которая будет хранить текущую историю диалога менеджера с клиентом, правила/манифест общения с клиентом и техническую/сопроводительную информацию об услугах банка, на которую должен обуславливаться менеджер (и цифровой наставник) при генерации ответов на вопросы клиента', signal=None)
+BAResponse(ba_text='Кто будет пользоваться продуктом? (Целевая аудитория)', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+Кто будет пользоваться продуктом? (Целевая аудитория)
+UserResponse(user_text='Продуктом будут пользоваться клиентские менеджеры для проверки/валидации своих ответов и получения базовых вариантов ответа для клиентов на их вопросы ', signal=None)
+BAResponse(ba_text='Есть ли предпочтения по технологиям или ограничения?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+Есть ли предпочтения по технологиям или ограничения?
+UserResponse(user_text='Одним из наиболее перспективных SOTA подходов является идея создания полноценной памяти агентов, построенных на основе графов. В общих фреймворках для построения и отслеживания LLM агентов, таких как LangGraph [5], есть некоторая фунциональность для работы с памятью агентов. Однако мы будем опираться на более специализированные решения.  В текущем году было представлено несколько решений по построению внешней памяти агентов на графах, среди них можно выделить две работы: Mem0 ("mem-zero") [6] и A-Mem: Agentic Memory [7]. В качестве бенчмарка для тестирования перечисленных решений использовался датасет LOCOMO [8], содержащий диалоги и вопросы к ним. Средняя длина диалога составляет 26000 токенов, и несмотря на то, что в настоящее время LLMs имеют возможность обработки такой длины контекста, было показано, что эффективность использования информации из контекста при генерации падает при увеличении длины контекста [9]. Таким образом, бенчмарк LOCOMO дает возможность оценить эффективность сохранения и извлечения фактов из внешней памяти для использования LLM агентом при генерации сообщений в диалоге. Граф знаний в решении AriGraph [2, 3], на котором будет базироваться данная работа, сочетает в себе как структурированные элементы (узлы и связи в семантической памяти, связи между семантическими и эпизодическими узлами), так и неструктурированные (текст в эпизодических узлах), что представляет собой потенциальное преимущество перед вышеперечисленными подходами. В работе [2] были приведены SOTA метрики (Exact Match) подхода AriGraph на датасете HotpotQA. В ходе данного проекта предполагается улучшение алгоритма извлечения и фильтрации релевантных фактов из графа знаний в системе AriGraph. Подтверждение данных предположений на бенчмарке LOCOMO будет представлять решение на уровне мировой SOTA, и будет означать существенное развитие технологий построения LLM-агентов.', signal=None)
+BAResponse(ba_text='Какие данные уже есть, и какие данные нужно собирать?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+Какие данные уже есть, и какие данные нужно собирать?
+UserResponse(user_text='Никаких данных нет, но потебуется подготовить датасеты для оценки качества следующих функций: (1) валидация ответов клиентских менеджеров; (2) генерация рекомендаций / вариантов ответа на вопросы клиентов; (3) корректировка ответов менеджеров на вопросы клиентов', signal=None)
+BAResponse(ba_text='Есть ли интеграции с другими системами?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+Есть ли интеграции с другими системами?
+UserResponse(user_text='Интеграции с другими системами нет', signal=None)
+BAResponse(ba_text='Какие есть дополнительные пожелания или требования?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+Какие есть дополнительные пожелания или требования?
+UserResponse(user_text='Поскольку для надежной архитектуры памяти необходима интеграция как структурированных, так и неструктурированных данных, такая интеграция осуществляется параллельно с концепциями семантической и эпизодической памяти. Граф знаний представляет собой сеть взаимосвязанных семантических знаний, в то время как эпизодические воспоминания отображаются в виде эпизодических ребер, которые могут связывать множество отношений внутри графа.  Построение графа, а также валидация и корректировка ответа менеджера будут реализованы в виде агентов на основе LLM. Тестирование алгоритмов планируется проводить с использованием GigaChat (при наличии доступа к вычислительным и информационным ресурсам Сбербанка), либо с LLaMA и QWEN (на мощностях Сколтеха). Финальное решение будет реализовано с использованием GigaChat. Предлагаемый подход является развитием подхода AriGraph [2, 3], и будет осуществляться исследовательской командой, в состав которой будут входить авторы данной статьи из Сколтеха.', signal=None)
+BAResponse(ba_text='Отлично, на этом общие вопросы закончены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Отлично, на этом общие вопросы закончены.
+BAResponse(ba_text='Анализирую описание задачи.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Анализирую описание задачи.
+BAResponse(ba_text='По результатам анализа, генерация технического задания по вашему описанию поддерживается.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+По результатам анализа, генерация технического задания по вашему описанию поддерживается.
+BAResponse(ba_text='Процесс анализа завершён.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Процесс анализа завершён.
+BAResponse(ba_text='Начинаю формирование секции технического задания с общей информацией по проекту.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Начинаю формирование секции технического задания с общей информацией по проекту.
+BAResponse(ba_text='Формирую раздел ТЗ с описанием назначение проекта.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Формирую раздел ТЗ с описанием назначение проекта.
+BAResponse(ba_text='Раздел сформирован.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Раздел сформирован.
+BAResponse(ba_text='Формирую раздел ТЗ с описанием основных задач в рамках проекта.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Формирую раздел ТЗ с описанием основных задач в рамках проекта.
+BAResponse(ba_text='Раздел сформирован.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Раздел сформирован.
+BAResponse(ba_text='Формирую раздел ТЗ с описанием интеграционных моментов.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Формирую раздел ТЗ с описанием интеграционных моментов.
+BAResponse(ba_text='Раздел сформирован.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Раздел сформирован.
+BAResponse(ba_text='Cекция с общей информацией по проекту сформирована.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Cекция с общей информацией по проекту сформирована.
+BAResponse(ba_text='Перейдём к уточнению деталей.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Перейдём к уточнению деталей.
+BAResponse(ba_text='Начинаю уточнение деталей по предметной области проекта.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Начинаю уточнение деталей по предметной области проекта.
+BAResponse(ba_text='Какие критерии будут использоваться для определения "правильности" или "корректности" ответов менеджеров, и кто будет ответственен за разработку этих критериев?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+Какие критерии будут использоваться для определения "правильности" или "корректности" ответов менеджеров, и кто будет ответственен за разработку этих критериев?
+UserResponse(user_text='Мы знаем следующие метрики эффективности, за счёт которых можно выполнить оценку заявленных функций:  Faithfulness, Correctness, Relevancy, BLEU, METEOR, ROUGE. Какие метрики нам ещё стоит включить для оценки качества валидации, генерации и коррекции ответов клиентского менеджера?', signal=None)
+BAResponse(ba_text='Какие эталонные ответы или шаблоны правильных формулировок существуют сейчас у вас в банке, которые могли бы служить основой для разработки критериев правильности и корректности ответов менеджеров?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+Какие эталонные ответы или шаблоны правильных формулировок существуют сейчас у вас в банке, которые могли бы служить основой для разработки критериев правильности и корректности ответов менеджеров?
+UserResponse(user_text='У нас нет эталонных ответов. Такой датасет потребуется подготовить для оценки качества функциональности, указанной ранее.', signal=None)
+BAResponse(ba_text='Какие источники информации будут использованы для формирования эталонных ответов и правил общения с клиентами, которые лягут в основу обучающего датасета и критериев оценки качества работы цифрового наставника?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+Какие источники информации будут использованы для формирования эталонных ответов и правил общения с клиентами, которые лягут в основу обучающего датасета и критериев оценки качества работы цифрового наставника?
+UserResponse(user_text='Можно брать любые источники. Необходимо, чтобы заявленный функционал системы был переимспольем: возможна итеграция в другие предметные области и для других кейсов.', signal=None)
+BAResponse(ba_text='Какие конкретные шаги и методы планируете использовать для сбора и подготовки данных, необходимых для формирования эталонных ответов и правил общения с клиентами, учитывая отсутствие готовых источников этой информации в вашем банке?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+Какие конкретные шаги и методы планируете использовать для сбора и подготовки данных, необходимых для формирования эталонных ответов и правил общения с клиентами, учитывая отсутствие готовых источников этой информации в вашем банке?
+UserResponse(user_text='Потребуется отобрать базовые QA-датасеты. Далее на их основе синтезировать вопросно-ответные пары для оценки качества функционала по валидации, генерации, коррекции ответов клиентских  менеджеров', signal=None)
+BAResponse(ba_text='Какие именно QA-датасеты планируется использовать в качестве основы для синтеза вопросно-ответных пар, и каким образом будет обеспечиваться соответствие этих наборов данных специфике продуктов и услуг вашего банка?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+Какие именно QA-датасеты планируется использовать в качестве основы для синтеза вопросно-ответных пар, и каким образом будет обеспечиваться соответствие этих наборов данных специфике продуктов и услуг вашего банка?
+UserResponse(user_text='Мы пока не знаем какие датаскты будут использованы. Для оценки качества нам не важна специфика датасета', signal=None)
+BAResponse(ba_text='Какие подходы и инструменты планируется применять для обеспечения репрезентативности и разнообразия синтетически созданных вопросно-ответных пар, чтобы они максимально полно отражали реальные сценарии взаимодействия менеджеров с клиентами?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+Какие подходы и инструменты планируется применять для обеспечения репрезентативности и разнообразия синтетически созданных вопросно-ответных пар, чтобы они максимально полно отражали реальные сценарии взаимодействия менеджеров с клиентами?
+UserResponse(user_text='Мы пока не знаем. Какие варианты можете предложить?', signal=None)
+BAResponse(ba_text='Какие методики и техники искусственного интеллекта, такие как data augmentation, transfer learning или domain adaptation, вы рассматриваете для увеличения разнообразия и реалистичности синтетических данных, используемых для тренировки и тестирования цифрового наставника?', available_state_signals=[], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=False)
+Какие методики и техники искусственного интеллекта, такие как data augmentation, transfer learning или domain adaptation, вы рассматриваете для увеличения разнообразия и реалистичности синтетических данных, используемых для тренировки и тестирования цифрового наставника?
+UserResponse(user_text=None, signal=<WeakGlobalSignal.next_stage: 0>)
+BAResponse(ba_text='Уточнение деталей предметной области завершено.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Уточнение деталей предметной области завершено.
+BAResponse(ba_text='Приступаю к уточнению пользовательских историй.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Приступаю к уточнению пользовательских историй.
+BAResponse(ba_text='Начинаю извлечение пользовательских историй на основе предоставленной информации.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Начинаю извлечение пользовательских историй на основе предоставленной информации.
+BAResponse(ba_text='Извлечено пользовательских историй: 5.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Извлечено пользовательских историй: 5.
+BAResponse(ba_text='Вы можете, при необходимости, редактировать, добавлять или удалять пользовательские истории.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.add: 6>, shortcut='Добавить user-историю', description=None), SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить user-историю', description=None), SignalInfo(signal=<WeakStateSignal.edit: 8>, shortcut='Изменить user-историю', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+Вы можете, при необходимости, редактировать, добавлять или удалять пользовательские истории.
+{'2e139': UserStory(id='2e139',
+                    statement='Клиентский менеджер использует систему для '
+                              'валидации своего ответа клиенту, чтобы '
+                              'убедиться, что он соответствует внутренним '
+                              'стандартам и требованиям Банка.',
+                    related_scenario_ids=[]),
+ '48f9b': UserStory(id='48f9b',
+                    statement='Руководитель отдела клиентских менеджеров '
+                              'оценивает результаты работы цифровых '
+                              'инструментов наставничества, используя '
+                              'показатели точности, актуальности и '
+                              'соответствия корпоративной политике Банка.',
+                    related_scenario_ids=[]),
+ '9ec07': UserStory(id='9ec07',
+                    statement='Цифровой наставник обновляет свою базу знаний '
+                              '(граф знаний) на основе новых данных о '
+                              'продуктах Банка, изменениях в правилах общения '
+                              'с клиентами и опыте предыдущих взаимодействий.',
+                    related_scenario_ids=[]),
+ 'd0cbe': UserStory(id='d0cbe',
+                    statement='Клиентский менеджер получает рекомендации от '
+                              'системы по возможному ответу на запрос клиента, '
+                              'если собственный ответ вызывает сомнения или '
+                              'требует уточнения.',
+                    related_scenario_ids=[]),
+ 'f5a9d': UserStory(id='f5a9d',
+                    statement='Клиентский менеджер применяет функцию '
+                              'корректировки ответа, предложенную системой, '
+                              'когда обнаруживает ошибки или несоответствия в '
+                              'своем первоначальном сообщении.',
+                    related_scenario_ids=[])}
+UserResponse(user_text=None, signal=<WeakStateSignal.delete: 7>)
+BAResponse(ba_text='Запускаю операцию удаления пользовательской истории.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Запускаю операцию удаления пользовательской истории.
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, которую необходимо удалить.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+Пожалуйста, введите идентификатор пользовательской истории, которую необходимо удалить.
+UserResponse(user_text='48f9b', signal=None)
+BAResponse(ba_text='История успешно удалена.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+История успешно удалена.
+BAResponse(ba_text='Операция по удалению пользовательской истории завершена.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Операция по удалению пользовательской истории завершена.
+BAResponse(ba_text='Вы можете, при необходимости, редактировать, добавлять или удалять пользовательские истории.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.add: 6>, shortcut='Добавить user-историю', description=None), SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить user-историю', description=None), SignalInfo(signal=<WeakStateSignal.edit: 8>, shortcut='Изменить user-историю', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+Вы можете, при необходимости, редактировать, добавлять или удалять пользовательские истории.
+{'2e139': UserStory(id='2e139',
+                    statement='Клиентский менеджер использует систему для '
+                              'валидации своего ответа клиенту, чтобы '
+                              'убедиться, что он соответствует внутренним '
+                              'стандартам и требованиям Банка.',
+                    related_scenario_ids=[]),
+ '9ec07': UserStory(id='9ec07',
+                    statement='Цифровой наставник обновляет свою базу знаний '
+                              '(граф знаний) на основе новых данных о '
+                              'продуктах Банка, изменениях в правилах общения '
+                              'с клиентами и опыте предыдущих взаимодействий.',
+                    related_scenario_ids=[]),
+ 'd0cbe': UserStory(id='d0cbe',
+                    statement='Клиентский менеджер получает рекомендации от '
+                              'системы по возможному ответу на запрос клиента, '
+                              'если собственный ответ вызывает сомнения или '
+                              'требует уточнения.',
+                    related_scenario_ids=[]),
+ 'f5a9d': UserStory(id='f5a9d',
+                    statement='Клиентский менеджер применяет функцию '
+                              'корректировки ответа, предложенную системой, '
+                              'когда обнаруживает ошибки или несоответствия в '
+                              'своем первоначальном сообщении.',
+                    related_scenario_ids=[])}
+UserResponse(user_text=None, signal=<WeakGlobalSignal.next_stage: 0>)
+BAResponse(ba_text='Уточнение пользовательских историй завершено.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Уточнение пользовательских историй завершено.
+BAResponse(ba_text='Начинаю извлечение ролей из пользовательских историй.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Начинаю извлечение ролей из пользовательских историй.
+BAResponse(ba_text='Извлечение завершено. Обнаружено ролей: 1.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Извлечение завершено. Обнаружено ролей: 1.
+BAResponse(ba_text='Операция по извлечению ролей завершена.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Операция по извлечению ролей завершена.
+BAResponse(ba_text='Приступаю к уточнению поддерживаемых сценариев.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Приступаю к уточнению поддерживаемых сценариев.
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Вы можете, при необходимости удалить или получить рекомендацию сценария.
+{}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Начинаю автоматическое формирование рекомендованного сценария.
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.
+UserResponse(user_text='2e139', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Пользовательская история успешно выбрана.
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Проверить Ответ Клиенту (СИ# c8202)\n1. Система принимает введенный текст и начинает процесс его анализа\n2. Менеджер ожидает завершения процесса проверки\n3. Система завершает анализ и предоставляет отчет о соответствии или несоответствии ответа установленным правилам и стандартам Банка\n4. Если ответ соответствует всем критериям, система отображает сообщение об успешном прохождении проверки\n5. Если обнаружены нарушения стандартов, система выделяет проблемные места в тексте и предлагает рекомендации по их исправлению\n6. Менеджер просматривает отчет и при необходимости редактирует свой ответ согласно рекомендациям системы\n7. После внесения изменений менеджер повторно инициирует проверку, повторяя шаги 1–7 до полного соответствия ответа стандартам Банка\n8. Когда ответ успешно проходит все этапы проверки, менеджер сохраняет финальную версию ответа и отправляет его клиенту', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценарий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: 
+Сценарий: Проверить Ответ Клиенту (СИ# c8202)
+1. Система принимает введенный текст и начинает процесс его анализа
+2. Менеджер ожидает завершения процесса проверки
+3. Система завершает анализ и предоставляет отчет о соответствии или несоответствии ответа установленным правилам и стандартам Банка
+4. Если ответ соответствует всем критериям, система отображает сообщение об успешном прохождении проверки
+5. Если обнаружены нарушения стандартов, система выделяет проблемные места в тексте и предлагает рекомендации по их исправлению
+6. Менеджер просматривает отчет и при необходимости редактирует свой ответ согласно рекомендациям системы
+7. После внесения изменений менеджер повторно инициирует проверку, повторяя шаги 1–7 до полного соответствия ответа стандартам Банка
+8. Когда ответ успешно проходит все этапы проверки, менеджер сохраняет финальную версию ответа и отправляет его клиенту
+UserResponse(user_text=None, signal=<WeakStateSignal.decline: 5>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Формирование и обработка рекомендации завершены.
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Вы можете, при необходимости удалить или получить рекомендацию сценария.
+{}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Начинаю автоматическое формирование рекомендованного сценария.
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.
+UserResponse(user_text='2e139', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Пользовательская история успешно выбрана.
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Проверить Корректность Ответа (СИ# 26825)\n1. Система принимает введенный текст и начинает процесс его анализа\n2. Клиентский менеджер нажимает кнопку «Проверьте мой ответ»\n3. Система сравнивает предоставленный ответ с внутренними стандартами и правилами коммуникации Банка\n4. Если ответ корректен, система отображает сообщение «Ваш ответ соответствует всем стандартам и правилам Банка» и предлагает отправить его клиенту\n5. Если ответ некорректен или требует доработки, система предоставляет рекомендации по улучшению ответа и указывает на возможные ошибки или несоответствия\n6. Клиентский менеджер просматривает полученные рекомендации и при необходимости редактирует свой ответ\n7. После внесения изменений клиентский менеджер повторно нажимает кнопку «Проверьте мой ответ», если требуется повторная проверка\n8. Система подтверждает окончательную корректность ответа после всех внесённых исправлений\n9. Клиентский менеджер отправляет финальный вариант ответа клиенту через свою рабочую среду', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценарий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: 
+Сценарий: Проверить Корректность Ответа (СИ# 26825)
+1. Система принимает введенный текст и начинает процесс его анализа
+2. Клиентский менеджер нажимает кнопку «Проверьте мой ответ»
+3. Система сравнивает предоставленный ответ с внутренними стандартами и правилами коммуникации Банка
+4. Если ответ корректен, система отображает сообщение «Ваш ответ соответствует всем стандартам и правилам Банка» и предлагает отправить его клиенту
+5. Если ответ некорректен или требует доработки, система предоставляет рекомендации по улучшению ответа и указывает на возможные ошибки или несоответствия
+6. Клиентский менеджер просматривает полученные рекомендации и при необходимости редактирует свой ответ
+7. После внесения изменений клиентский менеджер повторно нажимает кнопку «Проверьте мой ответ», если требуется повторная проверка
+8. Система подтверждает окончательную корректность ответа после всех внесённых исправлений
+9. Клиентский менеджер отправляет финальный вариант ответа клиенту через свою рабочую среду
+UserResponse(user_text=None, signal=<WeakStateSignal.approve: 4>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Формирование и обработка рекомендации завершены.
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+Вы можете, при необходимости удалить или получить рекомендацию сценария.
+{'26825': Scenario(id='26825',
+                   statement=None,
+                   title='Проверить Корректность Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Проверьте мой '
+                          'ответ»',
+                          'Система сравнивает предоставленный ответ с '
+                          'внутренними стандартами и правилами коммуникации '
+                          'Банка',
+                          'Если ответ корректен, система отображает сообщение '
+                          '«Ваш ответ соответствует всем стандартам и правилам '
+                          'Банка» и предлагает отправить его клиенту',
+                          'Если ответ некорректен или требует доработки, '
+                          'система предоставляет рекомендации по улучшению '
+                          'ответа и указывает на возможные ошибки или '
+                          'несоответствия',
+                          'Клиентский менеджер просматривает полученные '
+                          'рекомендации и при необходимости редактирует свой '
+                          'ответ',
+                          'После внесения изменений клиентский менеджер '
+                          'повторно нажимает кнопку «Проверьте мой ответ», '
+                          'если требуется повторная проверка',
+                          'Система подтверждает окончательную корректность '
+                          'ответа после всех внесённых исправлений',
+                          'Клиентский менеджер отправляет финальный вариант '
+                          'ответа клиенту через свою рабочую среду'],
+                   related_userstory_ids=['2e139'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Начинаю автоматическое формирование рекомендованного сценария.
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.
+UserResponse(user_text='2e139', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Пользовательская история успешно выбрана.
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Проверить Соответствие Ответа (СИ# 2345b)\n1. Система принимает введенный текст и начинает процесс его анализа\n2. Клиентский менеджер нажимает кнопку «Провести проверку»\n3. Система проводит семантический анализ текста ответа, сравнивая его с внутренними стандартами и правилами коммуникации Банка\n4. Если ответ полностью соответствует установленным правилам и стандартам, система отображает сообщение об успешном прохождении проверки\n5. Если обнаружены несоответствия или нарушения стандартов, система предоставляет детальный отчет с указанием конкретных проблемных мест и рекомендациями по их исправлению\n6. Клиентский менеджер просматривает предоставленный отчет и рекомендации\n7. При необходимости клиентский менеджер редактирует свой ответ согласно предложенным рекомендациям и повторяет шаги 1–7 до полного соответствия ответа всем требованиям', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценарий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: 
+Сценарий: Проверить Соответствие Ответа (СИ# 2345b)
+1. Система принимает введенный текст и начинает процесс его анализа
+2. Клиентский менеджер нажимает кнопку «Провести проверку»
+3. Система проводит семантический анализ текста ответа, сравнивая его с внутренними стандартами и правилами коммуникации Банка
+4. Если ответ полностью соответствует установленным правилам и стандартам, система отображает сообщение об успешном прохождении проверки
+5. Если обнаружены несоответствия или нарушения стандартов, система предоставляет детальный отчет с указанием конкретных проблемных мест и рекомендациями по их исправлению
+6. Клиентский менеджер просматривает предоставленный отчет и рекомендации
+7. При необходимости клиентский менеджер редактирует свой ответ согласно предложенным рекомендациям и повторяет шаги 1–7 до полного соответствия ответа всем требованиям
+UserResponse(user_text=None, signal=<WeakStateSignal.decline: 5>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Формирование и обработка рекомендации завершены.
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+Вы можете, при необходимости удалить или получить рекомендацию сценария.
+{'26825': Scenario(id='26825',
+                   statement=None,
+                   title='Проверить Корректность Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Проверьте мой '
+                          'ответ»',
+                          'Система сравнивает предоставленный ответ с '
+                          'внутренними стандартами и правилами коммуникации '
+                          'Банка',
+                          'Если ответ корректен, система отображает сообщение '
+                          '«Ваш ответ соответствует всем стандартам и правилам '
+                          'Банка» и предлагает отправить его клиенту',
+                          'Если ответ некорректен или требует доработки, '
+                          'система предоставляет рекомендации по улучшению '
+                          'ответа и указывает на возможные ошибки или '
+                          'несоответствия',
+                          'Клиентский менеджер просматривает полученные '
+                          'рекомендации и при необходимости редактирует свой '
+                          'ответ',
+                          'После внесения изменений клиентский менеджер '
+                          'повторно нажимает кнопку «Проверьте мой ответ», '
+                          'если требуется повторная проверка',
+                          'Система подтверждает окончательную корректность '
+                          'ответа после всех внесённых исправлений',
+                          'Клиентский менеджер отправляет финальный вариант '
+                          'ответа клиенту через свою рабочую среду'],
+                   related_userstory_ids=['2e139'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Начинаю автоматическое формирование рекомендованного сценария.
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.
+UserResponse(user_text='2e139', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Пользовательская история успешно выбрана.
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Проверить Адекватность Ответа (СИ# e5811)\n1. Система принимает введенный текст и начинает процесс его анализа\n2. Клиентский менеджер нажимает кнопку «Проверьте мой ответ»\n3. Система сравнивает предоставленный ответ менеджера с внутренними стандартами и правилами коммуникации Банка\n4. Система отображает результат проверки, информируя клиента об адекватности или необходимости корректировки ответа\n5. Если ответ требует изменений, система предоставляет рекомендации по улучшению сообщения\n6. Менеджер просматривает предложенные рекомендации и при необходимости редактирует свой ответ\n7. После внесения необходимых изменений менеджер повторно инициирует проверку, нажимая кнопку «Проверьте мой ответ» снова\n8. Система подтверждает соответствие исправленного ответа установленным нормам и правилам Банка\n9. Менеджер отправляет финальный вариант ответа клиенту через свою рабочую среду', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценарий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: 
+Сценарий: Проверить Адекватность Ответа (СИ# e5811)
+1. Система принимает введенный текст и начинает процесс его анализа
+2. Клиентский менеджер нажимает кнопку «Проверьте мой ответ»
+3. Система сравнивает предоставленный ответ менеджера с внутренними стандартами и правилами коммуникации Банка
+4. Система отображает результат проверки, информируя клиента об адекватности или необходимости корректировки ответа
+5. Если ответ требует изменений, система предоставляет рекомендации по улучшению сообщения
+6. Менеджер просматривает предложенные рекомендации и при необходимости редактирует свой ответ
+7. После внесения необходимых изменений менеджер повторно инициирует проверку, нажимая кнопку «Проверьте мой ответ» снова
+8. Система подтверждает соответствие исправленного ответа установленным нормам и правилам Банка
+9. Менеджер отправляет финальный вариант ответа клиенту через свою рабочую среду
+UserResponse(user_text=None, signal=<WeakStateSignal.decline: 5>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Формирование и обработка рекомендации завершены.
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+Вы можете, при необходимости удалить или получить рекомендацию сценария.
+{'26825': Scenario(id='26825',
+                   statement=None,
+                   title='Проверить Корректность Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Проверьте мой '
+                          'ответ»',
+                          'Система сравнивает предоставленный ответ с '
+                          'внутренними стандартами и правилами коммуникации '
+                          'Банка',
+                          'Если ответ корректен, система отображает сообщение '
+                          '«Ваш ответ соответствует всем стандартам и правилам '
+                          'Банка» и предлагает отправить его клиенту',
+                          'Если ответ некорректен или требует доработки, '
+                          'система предоставляет рекомендации по улучшению '
+                          'ответа и указывает на возможные ошибки или '
+                          'несоответствия',
+                          'Клиентский менеджер просматривает полученные '
+                          'рекомендации и при необходимости редактирует свой '
+                          'ответ',
+                          'После внесения изменений клиентский менеджер '
+                          'повторно нажимает кнопку «Проверьте мой ответ», '
+                          'если требуется повторная проверка',
+                          'Система подтверждает окончательную корректность '
+                          'ответа после всех внесённых исправлений',
+                          'Клиентский менеджер отправляет финальный вариант '
+                          'ответа клиенту через свою рабочую среду'],
+                   related_userstory_ids=['2e139'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Начинаю автоматическое формирование рекомендованного сценария.
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.
+UserResponse(user_text='2e139', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Пользовательская история успешно выбрана.
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Проверить Качество Ответа (СИ# cd5e7)\n1. Система принимает введенный текст и начинает процесс его анализа\n2. Клиентский менеджер нажимает кнопку «Провести проверку»\n3. Система проводит семантический анализ текста ответа, сравнивая его с внутренними стандартами и правилами коммуникации Банка\n4. Система выявляет возможные несоответствия или нарушения стандартов качества обслуживания\n5. Если найдены ошибки или рекомендации, система отображает их менеджеру вместе с предложениями по улучшению ответа\n6. Менеджер просматривает предоставленные замечания и предложения по корректировке ответа\n7. При необходимости менеджер редактирует свой первоначальный ответ, учитывая полученные рекомендации\n8. После внесения изменений менеджер повторно инициирует проверку, нажимая кнопку «Провести повторную проверку»\n9. Система повторно анализирует изменённый ответ и подтверждает соответствие всем установленным критериям качества\n10. Система уведомляет менеджера об успешном прохождении проверки и готовности ответа к отправке клиенту', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценарий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: 
+Сценарий: Проверить Качество Ответа (СИ# cd5e7)
+1. Система принимает введенный текст и начинает процесс его анализа
+2. Клиентский менеджер нажимает кнопку «Провести проверку»
+3. Система проводит семантический анализ текста ответа, сравнивая его с внутренними стандартами и правилами коммуникации Банка
+4. Система выявляет возможные несоответствия или нарушения стандартов качества обслуживания
+5. Если найдены ошибки или рекомендации, система отображает их менеджеру вместе с предложениями по улучшению ответа
+6. Менеджер просматривает предоставленные замечания и предложения по корректировке ответа
+7. При необходимости менеджер редактирует свой первоначальный ответ, учитывая полученные рекомендации
+8. После внесения изменений менеджер повторно инициирует проверку, нажимая кнопку «Провести повторную проверку»
+9. Система повторно анализирует изменённый ответ и подтверждает соответствие всем установленным критериям качества
+10. Система уведомляет менеджера об успешном прохождении проверки и готовности ответа к отправке клиенту
+UserResponse(user_text=None, signal=<WeakStateSignal.approve: 4>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Формирование и обработка рекомендации завершены.
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+Вы можете, при необходимости удалить или получить рекомендацию сценария.
+{'26825': Scenario(id='26825',
+                   statement=None,
+                   title='Проверить Корректность Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Проверьте мой '
+                          'ответ»',
+                          'Система сравнивает предоставленный ответ с '
+                          'внутренними стандартами и правилами коммуникации '
+                          'Банка',
+                          'Если ответ корректен, система отображает сообщение '
+                          '«Ваш ответ соответствует всем стандартам и правилам '
+                          'Банка» и предлагает отправить его клиенту',
+                          'Если ответ некорректен или требует доработки, '
+                          'система предоставляет рекомендации по улучшению '
+                          'ответа и указывает на возможные ошибки или '
+                          'несоответствия',
+                          'Клиентский менеджер просматривает полученные '
+                          'рекомендации и при необходимости редактирует свой '
+                          'ответ',
+                          'После внесения изменений клиентский менеджер '
+                          'повторно нажимает кнопку «Проверьте мой ответ», '
+                          'если требуется повторная проверка',
+                          'Система подтверждает окончательную корректность '
+                          'ответа после всех внесённых исправлений',
+                          'Клиентский менеджер отправляет финальный вариант '
+                          'ответа клиенту через свою рабочую среду'],
+                   related_userstory_ids=['2e139']),
+ 'cd5e7': Scenario(id='cd5e7',
+                   statement=None,
+                   title='Проверить Качество Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Провести '
+                          'проверку»',
+                          'Система проводит семантический анализ текста '
+                          'ответа, сравнивая его с внутренними стандартами и '
+                          'правилами коммуникации Банка',
+                          'Система выявляет возможные несоответствия или '
+                          'нарушения стандартов качества обслуживания',
+                          'Если найдены ошибки или рекомендации, система '
+                          'отображает их менеджеру вместе с предложениями по '
+                          'улучшению ответа',
+                          'Менеджер просматривает предоставленные замечания и '
+                          'предложения по корректировке ответа',
+                          'При необходимости менеджер редактирует свой '
+                          'первоначальный ответ, учитывая полученные '
+                          'рекомендации',
+                          'После внесения изменений менеджер повторно '
+                          'инициирует проверку, нажимая кнопку «Провести '
+                          'повторную проверку»',
+                          'Система повторно анализирует изменённый ответ и '
+                          'подтверждает соответствие всем установленным '
+                          'критериям качества',
+                          'Система уведомляет менеджера об успешном '
+                          'прохождении проверки и готовности ответа к отправке '
+                          'клиенту'],
+                   related_userstory_ids=['2e139'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Начинаю автоматическое формирование рекомендованного сценария.
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.
+UserResponse(user_text='2e139', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Пользовательская история успешно выбрана.
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Проверить Соответствие Отвечающего Стандартам (СИ# 1109e)\n1. Система принимает введенный текст и начинает процесс его анализа\n2. Клиентский менеджер инициирует запуск проверки соответствия введённого ответа стандартам нажатием кнопки «Проверить»\n3. Система проводит семантический анализ текста ответа клиента, используя встроенные правила и стандарты коммуникации Банка\n4. Если ответ полностью соответствует установленным стандартам, система отображает сообщение об успешном прохождении проверки\n5. Если обнаружены несоответствия или нарушения стандартов, система предоставляет детальный отчет с указанием конкретных проблемных мест и рекомендациями по их исправлению\n6. Клиентский менеджер просматривает предоставленный отчет и рекомендации\n7. При необходимости клиентский менеджер редактирует свой ответ согласно предложенным рекомендациям и повторяет шаги 1–7 до полного устранения всех выявленных нарушений', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценарий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: 
+Сценарий: Проверить Соответствие Отвечающего Стандартам (СИ# 1109e)
+1. Система принимает введенный текст и начинает процесс его анализа
+2. Клиентский менеджер инициирует запуск проверки соответствия введённого ответа стандартам нажатием кнопки «Проверить»
+3. Система проводит семантический анализ текста ответа клиента, используя встроенные правила и стандарты коммуникации Банка
+4. Если ответ полностью соответствует установленным стандартам, система отображает сообщение об успешном прохождении проверки
+5. Если обнаружены несоответствия или нарушения стандартов, система предоставляет детальный отчет с указанием конкретных проблемных мест и рекомендациями по их исправлению
+6. Клиентский менеджер просматривает предоставленный отчет и рекомендации
+7. При необходимости клиентский менеджер редактирует свой ответ согласно предложенным рекомендациям и повторяет шаги 1–7 до полного устранения всех выявленных нарушений
+UserResponse(user_text=None, signal=<WeakStateSignal.approve: 4>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Формирование и обработка рекомендации завершены.
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+Вы можете, при необходимости удалить или получить рекомендацию сценария.
+{'1109e': Scenario(id='1109e',
+                   statement=None,
+                   title='Проверить Соответствие Отвечающего Стандартам',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер инициирует запуск проверки '
+                          'соответствия введённого ответа стандартам нажатием '
+                          'кнопки «Проверить»',
+                          'Система проводит семантический анализ текста ответа '
+                          'клиента, используя встроенные правила и стандарты '
+                          'коммуникации Банка',
+                          'Если ответ полностью соответствует установленным '
+                          'стандартам, система отображает сообщение об '
+                          'успешном прохождении проверки',
+                          'Если обнаружены несоответствия или нарушения '
+                          'стандартов, система предоставляет детальный отчет с '
+                          'указанием конкретных проблемных мест и '
+                          'рекомендациями по их исправлению',
+                          'Клиентский менеджер просматривает предоставленный '
+                          'отчет и рекомендации',
+                          'При необходимости клиентский менеджер редактирует '
+                          'свой ответ согласно предложенным рекомендациям и '
+                          'повторяет шаги 1–7 до полного устранения всех '
+                          'выявленных нарушений'],
+                   related_userstory_ids=['2e139']),
+ '26825': Scenario(id='26825',
+                   statement=None,
+                   title='Проверить Корректность Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Проверьте мой '
+                          'ответ»',
+                          'Система сравнивает предоставленный ответ с '
+                          'внутренними стандартами и правилами коммуникации '
+                          'Банка',
+                          'Если ответ корректен, система отображает сообщение '
+                          '«Ваш ответ соответствует всем стандартам и правилам '
+                          'Банка» и предлагает отправить его клиенту',
+                          'Если ответ некорректен или требует доработки, '
+                          'система предоставляет рекомендации по улучшению '
+                          'ответа и указывает на возможные ошибки или '
+                          'несоответствия',
+                          'Клиентский менеджер просматривает полученные '
+                          'рекомендации и при необходимости редактирует свой '
+                          'ответ',
+                          'После внесения изменений клиентский менеджер '
+                          'повторно нажимает кнопку «Проверьте мой ответ», '
+                          'если требуется повторная проверка',
+                          'Система подтверждает окончательную корректность '
+                          'ответа после всех внесённых исправлений',
+                          'Клиентский менеджер отправляет финальный вариант '
+                          'ответа клиенту через свою рабочую среду'],
+                   related_userstory_ids=['2e139']),
+ 'cd5e7': Scenario(id='cd5e7',
+                   statement=None,
+                   title='Проверить Качество Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Провести '
+                          'проверку»',
+                          'Система проводит семантический анализ текста '
+                          'ответа, сравнивая его с внутренними стандартами и '
+                          'правилами коммуникации Банка',
+                          'Система выявляет возможные несоответствия или '
+                          'нарушения стандартов качества обслуживания',
+                          'Если найдены ошибки или рекомендации, система '
+                          'отображает их менеджеру вместе с предложениями по '
+                          'улучшению ответа',
+                          'Менеджер просматривает предоставленные замечания и '
+                          'предложения по корректировке ответа',
+                          'При необходимости менеджер редактирует свой '
+                          'первоначальный ответ, учитывая полученные '
+                          'рекомендации',
+                          'После внесения изменений менеджер повторно '
+                          'инициирует проверку, нажимая кнопку «Провести '
+                          'повторную проверку»',
+                          'Система повторно анализирует изменённый ответ и '
+                          'подтверждает соответствие всем установленным '
+                          'критериям качества',
+                          'Система уведомляет менеджера об успешном '
+                          'прохождении проверки и готовности ответа к отправке '
+                          'клиенту'],
+                   related_userstory_ids=['2e139'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Начинаю автоматическое формирование рекомендованного сценария.
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.
+UserResponse(user_text='2e139', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Пользовательская история успешно выбрана.
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Проверить Согласованность Ответа (СИ# 2ae8d)\n1. Система принимает введенный текст и начинает процесс его анализа\n2. Клиентский менеджер нажимает кнопку «Провести проверку»\n3. Система проводит семантический анализ текста ответа клиента, сравнивая его с внутренними стандартами и правилами коммуникации Банка\n4. Если ответ соответствует всем установленным правилам и стандартам, система отображает сообщение об успешном прохождении проверки\n5. Если обнаружены несоответствия или нарушения стандартов, система предоставляет детальный отчет с указанием конкретных проблемных мест и рекомендациями по их исправлению\n6. Клиентский менеджер просматривает предоставленный отчет и рекомендации\n7. При необходимости клиентский менеджер редактирует свой ответ согласно предложенным рекомендациям и повторяет шаги 1–7 до полного соответствия всех критериев', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценарий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: 
+Сценарий: Проверить Согласованность Ответа (СИ# 2ae8d)
+1. Система принимает введенный текст и начинает процесс его анализа
+2. Клиентский менеджер нажимает кнопку «Провести проверку»
+3. Система проводит семантический анализ текста ответа клиента, сравнивая его с внутренними стандартами и правилами коммуникации Банка
+4. Если ответ соответствует всем установленным правилам и стандартам, система отображает сообщение об успешном прохождении проверки
+5. Если обнаружены несоответствия или нарушения стандартов, система предоставляет детальный отчет с указанием конкретных проблемных мест и рекомендациями по их исправлению
+6. Клиентский менеджер просматривает предоставленный отчет и рекомендации
+7. При необходимости клиентский менеджер редактирует свой ответ согласно предложенным рекомендациям и повторяет шаги 1–7 до полного соответствия всех критериев
+UserResponse(user_text=None, signal=<WeakStateSignal.decline: 5>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Формирование и обработка рекомендации завершены.
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+Вы можете, при необходимости удалить или получить рекомендацию сценария.
+{'1109e': Scenario(id='1109e',
+                   statement=None,
+                   title='Проверить Соответствие Отвечающего Стандартам',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер инициирует запуск проверки '
+                          'соответствия введённого ответа стандартам нажатием '
+                          'кнопки «Проверить»',
+                          'Система проводит семантический анализ текста ответа '
+                          'клиента, используя встроенные правила и стандарты '
+                          'коммуникации Банка',
+                          'Если ответ полностью соответствует установленным '
+                          'стандартам, система отображает сообщение об '
+                          'успешном прохождении проверки',
+                          'Если обнаружены несоответствия или нарушения '
+                          'стандартов, система предоставляет детальный отчет с '
+                          'указанием конкретных проблемных мест и '
+                          'рекомендациями по их исправлению',
+                          'Клиентский менеджер просматривает предоставленный '
+                          'отчет и рекомендации',
+                          'При необходимости клиентский менеджер редактирует '
+                          'свой ответ согласно предложенным рекомендациям и '
+                          'повторяет шаги 1–7 до полного устранения всех '
+                          'выявленных нарушений'],
+                   related_userstory_ids=['2e139']),
+ '26825': Scenario(id='26825',
+                   statement=None,
+                   title='Проверить Корректность Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Проверьте мой '
+                          'ответ»',
+                          'Система сравнивает предоставленный ответ с '
+                          'внутренними стандартами и правилами коммуникации '
+                          'Банка',
+                          'Если ответ корректен, система отображает сообщение '
+                          '«Ваш ответ соответствует всем стандартам и правилам '
+                          'Банка» и предлагает отправить его клиенту',
+                          'Если ответ некорректен или требует доработки, '
+                          'система предоставляет рекомендации по улучшению '
+                          'ответа и указывает на возможные ошибки или '
+                          'несоответствия',
+                          'Клиентский менеджер просматривает полученные '
+                          'рекомендации и при необходимости редактирует свой '
+                          'ответ',
+                          'После внесения изменений клиентский менеджер '
+                          'повторно нажимает кнопку «Проверьте мой ответ», '
+                          'если требуется повторная проверка',
+                          'Система подтверждает окончательную корректность '
+                          'ответа после всех внесённых исправлений',
+                          'Клиентский менеджер отправляет финальный вариант '
+                          'ответа клиенту через свою рабочую среду'],
+                   related_userstory_ids=['2e139']),
+ 'cd5e7': Scenario(id='cd5e7',
+                   statement=None,
+                   title='Проверить Качество Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Провести '
+                          'проверку»',
+                          'Система проводит семантический анализ текста '
+                          'ответа, сравнивая его с внутренними стандартами и '
+                          'правилами коммуникации Банка',
+                          'Система выявляет возможные несоответствия или '
+                          'нарушения стандартов качества обслуживания',
+                          'Если найдены ошибки или рекомендации, система '
+                          'отображает их менеджеру вместе с предложениями по '
+                          'улучшению ответа',
+                          'Менеджер просматривает предоставленные замечания и '
+                          'предложения по корректировке ответа',
+                          'При необходимости менеджер редактирует свой '
+                          'первоначальный ответ, учитывая полученные '
+                          'рекомендации',
+                          'После внесения изменений менеджер повторно '
+                          'инициирует проверку, нажимая кнопку «Провести '
+                          'повторную проверку»',
+                          'Система повторно анализирует изменённый ответ и '
+                          'подтверждает соответствие всем установленным '
+                          'критериям качества',
+                          'Система уведомляет менеджера об успешном '
+                          'прохождении проверки и готовности ответа к отправке '
+                          'клиенту'],
+                   related_userstory_ids=['2e139'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Начинаю автоматическое формирование рекомендованного сценария.
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.
+UserResponse(user_text='9ec07', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Пользовательская история успешно выбрана.
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Обновлять Базу Знаний (СИ# 9f357)\n1. Цифровой наставник инициирует процесс обновления базы знаний\n2. Системы управления данными предоставляют цифровому наставнику доступ к новым данным\n3. Цифровой наставник извлекает новые данные и проводит их предварительную обработку\n4. Цифровой наставник интегрирует обработанные данные в существующий граф знаний\n5. Граф знаний автоматически пересчитывает связи и зависимости между элементами графа при необходимости\n6. Цифровой наставник завершает обновление базы знаний и уведомляет систему мониторинга о завершении процесса', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценарий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: 
+Сценарий: Обновлять Базу Знаний (СИ# 9f357)
+1. Цифровой наставник инициирует процесс обновления базы знаний
+2. Системы управления данными предоставляют цифровому наставнику доступ к новым данным
+3. Цифровой наставник извлекает новые данные и проводит их предварительную обработку
+4. Цифровой наставник интегрирует обработанные данные в существующий граф знаний
+5. Граф знаний автоматически пересчитывает связи и зависимости между элементами графа при необходимости
+6. Цифровой наставник завершает обновление базы знаний и уведомляет систему мониторинга о завершении процесса
+UserResponse(user_text=None, signal=<WeakStateSignal.decline: 5>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Формирование и обработка рекомендации завершены.
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+Вы можете, при необходимости удалить или получить рекомендацию сценария.
+{'1109e': Scenario(id='1109e',
+                   statement=None,
+                   title='Проверить Соответствие Отвечающего Стандартам',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер инициирует запуск проверки '
+                          'соответствия введённого ответа стандартам нажатием '
+                          'кнопки «Проверить»',
+                          'Система проводит семантический анализ текста ответа '
+                          'клиента, используя встроенные правила и стандарты '
+                          'коммуникации Банка',
+                          'Если ответ полностью соответствует установленным '
+                          'стандартам, система отображает сообщение об '
+                          'успешном прохождении проверки',
+                          'Если обнаружены несоответствия или нарушения '
+                          'стандартов, система предоставляет детальный отчет с '
+                          'указанием конкретных проблемных мест и '
+                          'рекомендациями по их исправлению',
+                          'Клиентский менеджер просматривает предоставленный '
+                          'отчет и рекомендации',
+                          'При необходимости клиентский менеджер редактирует '
+                          'свой ответ согласно предложенным рекомендациям и '
+                          'повторяет шаги 1–7 до полного устранения всех '
+                          'выявленных нарушений'],
+                   related_userstory_ids=['2e139']),
+ '26825': Scenario(id='26825',
+                   statement=None,
+                   title='Проверить Корректность Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Проверьте мой '
+                          'ответ»',
+                          'Система сравнивает предоставленный ответ с '
+                          'внутренними стандартами и правилами коммуникации '
+                          'Банка',
+                          'Если ответ корректен, система отображает сообщение '
+                          '«Ваш ответ соответствует всем стандартам и правилам '
+                          'Банка» и предлагает отправить его клиенту',
+                          'Если ответ некорректен или требует доработки, '
+                          'система предоставляет рекомендации по улучшению '
+                          'ответа и указывает на возможные ошибки или '
+                          'несоответствия',
+                          'Клиентский менеджер просматривает полученные '
+                          'рекомендации и при необходимости редактирует свой '
+                          'ответ',
+                          'После внесения изменений клиентский менеджер '
+                          'повторно нажимает кнопку «Проверьте мой ответ», '
+                          'если требуется повторная проверка',
+                          'Система подтверждает окончательную корректность '
+                          'ответа после всех внесённых исправлений',
+                          'Клиентский менеджер отправляет финальный вариант '
+                          'ответа клиенту через свою рабочую среду'],
+                   related_userstory_ids=['2e139']),
+ 'cd5e7': Scenario(id='cd5e7',
+                   statement=None,
+                   title='Проверить Качество Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Провести '
+                          'проверку»',
+                          'Система проводит семантический анализ текста '
+                          'ответа, сравнивая его с внутренними стандартами и '
+                          'правилами коммуникации Банка',
+                          'Система выявляет возможные несоответствия или '
+                          'нарушения стандартов качества обслуживания',
+                          'Если найдены ошибки или рекомендации, система '
+                          'отображает их менеджеру вместе с предложениями по '
+                          'улучшению ответа',
+                          'Менеджер просматривает предоставленные замечания и '
+                          'предложения по корректировке ответа',
+                          'При необходимости менеджер редактирует свой '
+                          'первоначальный ответ, учитывая полученные '
+                          'рекомендации',
+                          'После внесения изменений менеджер повторно '
+                          'инициирует проверку, нажимая кнопку «Провести '
+                          'повторную проверку»',
+                          'Система повторно анализирует изменённый ответ и '
+                          'подтверждает соответствие всем установленным '
+                          'критериям качества',
+                          'Система уведомляет менеджера об успешном '
+                          'прохождении проверки и готовности ответа к отправке '
+                          'клиенту'],
+                   related_userstory_ids=['2e139'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Начинаю автоматическое формирование рекомендованного сценария.
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.
+UserResponse(user_text='9ec07', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Пользовательская история успешно выбрана.
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Обновлять Граф Знаний (СИ# 84d81)\n1. Цифровой наставник инициирует процесс обновления графа знаний\n2. Системы управления данными предоставляют цифровому наставнику доступ к новым данным\n3. Цифровой наставник извлекает новые данные из предоставленных источников\n4. Цифровой наставник проводит предварительный анализ извлечённых данных для выявления их релевантности и актуальности\n5. Если данные признаны релевантными и актуальными, цифровой наставник начинает обновление графа знаний\n6. Цифровой наставник добавляет новую информацию в граф знаний, сохраняя структуру и связи существующих данных\n7. Цифровой наставник удаляет устаревшую информацию из графа знаний при необходимости\n8. После завершения процесса обновления цифровой наставник уведомляет систему мониторинга о завершении операции\n9. Система мониторинга подтверждает успешность обновления графа знаний', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценарий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: 
+Сценарий: Обновлять Граф Знаний (СИ# 84d81)
+1. Цифровой наставник инициирует процесс обновления графа знаний
+2. Системы управления данными предоставляют цифровому наставнику доступ к новым данным
+3. Цифровой наставник извлекает новые данные из предоставленных источников
+4. Цифровой наставник проводит предварительный анализ извлечённых данных для выявления их релевантности и актуальности
+5. Если данные признаны релевантными и актуальными, цифровой наставник начинает обновление графа знаний
+6. Цифровой наставник добавляет новую информацию в граф знаний, сохраняя структуру и связи существующих данных
+7. Цифровой наставник удаляет устаревшую информацию из графа знаний при необходимости
+8. После завершения процесса обновления цифровой наставник уведомляет систему мониторинга о завершении операции
+9. Система мониторинга подтверждает успешность обновления графа знаний
+UserResponse(user_text=None, signal=<WeakStateSignal.decline: 5>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Формирование и обработка рекомендации завершены.
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+Вы можете, при необходимости удалить или получить рекомендацию сценария.
+{'1109e': Scenario(id='1109e',
+                   statement=None,
+                   title='Проверить Соответствие Отвечающего Стандартам',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер инициирует запуск проверки '
+                          'соответствия введённого ответа стандартам нажатием '
+                          'кнопки «Проверить»',
+                          'Система проводит семантический анализ текста ответа '
+                          'клиента, используя встроенные правила и стандарты '
+                          'коммуникации Банка',
+                          'Если ответ полностью соответствует установленным '
+                          'стандартам, система отображает сообщение об '
+                          'успешном прохождении проверки',
+                          'Если обнаружены несоответствия или нарушения '
+                          'стандартов, система предоставляет детальный отчет с '
+                          'указанием конкретных проблемных мест и '
+                          'рекомендациями по их исправлению',
+                          'Клиентский менеджер просматривает предоставленный '
+                          'отчет и рекомендации',
+                          'При необходимости клиентский менеджер редактирует '
+                          'свой ответ согласно предложенным рекомендациям и '
+                          'повторяет шаги 1–7 до полного устранения всех '
+                          'выявленных нарушений'],
+                   related_userstory_ids=['2e139']),
+ '26825': Scenario(id='26825',
+                   statement=None,
+                   title='Проверить Корректность Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Проверьте мой '
+                          'ответ»',
+                          'Система сравнивает предоставленный ответ с '
+                          'внутренними стандартами и правилами коммуникации '
+                          'Банка',
+                          'Если ответ корректен, система отображает сообщение '
+                          '«Ваш ответ соответствует всем стандартам и правилам '
+                          'Банка» и предлагает отправить его клиенту',
+                          'Если ответ некорректен или требует доработки, '
+                          'система предоставляет рекомендации по улучшению '
+                          'ответа и указывает на возможные ошибки или '
+                          'несоответствия',
+                          'Клиентский менеджер просматривает полученные '
+                          'рекомендации и при необходимости редактирует свой '
+                          'ответ',
+                          'После внесения изменений клиентский менеджер '
+                          'повторно нажимает кнопку «Проверьте мой ответ», '
+                          'если требуется повторная проверка',
+                          'Система подтверждает окончательную корректность '
+                          'ответа после всех внесённых исправлений',
+                          'Клиентский менеджер отправляет финальный вариант '
+                          'ответа клиенту через свою рабочую среду'],
+                   related_userstory_ids=['2e139']),
+ 'cd5e7': Scenario(id='cd5e7',
+                   statement=None,
+                   title='Проверить Качество Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Провести '
+                          'проверку»',
+                          'Система проводит семантический анализ текста '
+                          'ответа, сравнивая его с внутренними стандартами и '
+                          'правилами коммуникации Банка',
+                          'Система выявляет возможные несоответствия или '
+                          'нарушения стандартов качества обслуживания',
+                          'Если найдены ошибки или рекомендации, система '
+                          'отображает их менеджеру вместе с предложениями по '
+                          'улучшению ответа',
+                          'Менеджер просматривает предоставленные замечания и '
+                          'предложения по корректировке ответа',
+                          'При необходимости менеджер редактирует свой '
+                          'первоначальный ответ, учитывая полученные '
+                          'рекомендации',
+                          'После внесения изменений менеджер повторно '
+                          'инициирует проверку, нажимая кнопку «Провести '
+                          'повторную проверку»',
+                          'Система повторно анализирует изменённый ответ и '
+                          'подтверждает соответствие всем установленным '
+                          'критериям качества',
+                          'Система уведомляет менеджера об успешном '
+                          'прохождении проверки и готовности ответа к отправке '
+                          'клиенту'],
+                   related_userstory_ids=['2e139'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Начинаю автоматическое формирование рекомендованного сценария.
+BAResponse(ba_text='Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=False)
+Пожалуйста, введите идентификатор пользовательской истории, на основе которой будет предложен сценарий.
+UserResponse(user_text='9ec07', signal=None)
+BAResponse(ba_text='Пользовательская история успешно выбрана.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Пользовательская история успешно выбрана.
+BAResponse(ba_text='Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: \nСценарий: Обновлять Знания Наставника (СИ# 83bc5)\n1. Системный модуль проверки достоверности автоматически верифицирует полученные изменения или дополнения\n2. Если информация признана корректной, цифровой наставник инициирует процесс обновления графа знаний\n3. Граф знаний принимает новую информацию и интегрирует её в существующую структуру данных\n4. После завершения интеграции цифровой наставник уведомляет систему управления знаниями о завершении процесса обновления\n5. Система управления знаниями подтверждает успешное обновление базы знаний и информирует всех заинтересованных участников о доступности новой версии знаний', available_state_signals=[SignalInfo(signal=<WeakStateSignal.approve: 4>, shortcut='Добавить сценарий в ТЗ', description=None), SignalInfo(signal=<WeakStateSignal.decline: 5>, shortcut='Отклонить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.cancel_operation: 0>, shortcut='Отменить действие', description=None)], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Примите решение по предложенному сценарию: добавить его в ТЗ или отклонить: 
+Сценарий: Обновлять Знания Наставника (СИ# 83bc5)
+1. Системный модуль проверки достоверности автоматически верифицирует полученные изменения или дополнения
+2. Если информация признана корректной, цифровой наставник инициирует процесс обновления графа знаний
+3. Граф знаний принимает новую информацию и интегрирует её в существующую структуру данных
+4. После завершения интеграции цифровой наставник уведомляет систему управления знаниями о завершении процесса обновления
+5. Система управления знаниями подтверждает успешное обновление базы знаний и информирует всех заинтересованных участников о доступности новой версии знаний
+UserResponse(user_text=None, signal=<WeakStateSignal.decline: 5>)
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Формирование и обработка рекомендации завершены.
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+Вы можете, при необходимости удалить или получить рекомендацию сценария.
+{'1109e': Scenario(id='1109e',
+                   statement=None,
+                   title='Проверить Соответствие Отвечающего Стандартам',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер инициирует запуск проверки '
+                          'соответствия введённого ответа стандартам нажатием '
+                          'кнопки «Проверить»',
+                          'Система проводит семантический анализ текста ответа '
+                          'клиента, используя встроенные правила и стандарты '
+                          'коммуникации Банка',
+                          'Если ответ полностью соответствует установленным '
+                          'стандартам, система отображает сообщение об '
+                          'успешном прохождении проверки',
+                          'Если обнаружены несоответствия или нарушения '
+                          'стандартов, система предоставляет детальный отчет с '
+                          'указанием конкретных проблемных мест и '
+                          'рекомендациями по их исправлению',
+                          'Клиентский менеджер просматривает предоставленный '
+                          'отчет и рекомендации',
+                          'При необходимости клиентский менеджер редактирует '
+                          'свой ответ согласно предложенным рекомендациям и '
+                          'повторяет шаги 1–7 до полного устранения всех '
+                          'выявленных нарушений'],
+                   related_userstory_ids=['2e139']),
+ '26825': Scenario(id='26825',
+                   statement=None,
+                   title='Проверить Корректность Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Проверьте мой '
+                          'ответ»',
+                          'Система сравнивает предоставленный ответ с '
+                          'внутренними стандартами и правилами коммуникации '
+                          'Банка',
+                          'Если ответ корректен, система отображает сообщение '
+                          '«Ваш ответ соответствует всем стандартам и правилам '
+                          'Банка» и предлагает отправить его клиенту',
+                          'Если ответ некорректен или требует доработки, '
+                          'система предоставляет рекомендации по улучшению '
+                          'ответа и указывает на возможные ошибки или '
+                          'несоответствия',
+                          'Клиентский менеджер просматривает полученные '
+                          'рекомендации и при необходимости редактирует свой '
+                          'ответ',
+                          'После внесения изменений клиентский менеджер '
+                          'повторно нажимает кнопку «Проверьте мой ответ», '
+                          'если требуется повторная проверка',
+                          'Система подтверждает окончательную корректность '
+                          'ответа после всех внесённых исправлений',
+                          'Клиентский менеджер отправляет финальный вариант '
+                          'ответа клиенту через свою рабочую среду'],
+                   related_userstory_ids=['2e139']),
+ 'cd5e7': Scenario(id='cd5e7',
+                   statement=None,
+                   title='Проверить Качество Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Провести '
+                          'проверку»',
+                          'Система проводит семантический анализ текста '
+                          'ответа, сравнивая его с внутренними стандартами и '
+                          'правилами коммуникации Банка',
+                          'Система выявляет возможные несоответствия или '
+                          'нарушения стандартов качества обслуживания',
+                          'Если найдены ошибки или рекомендации, система '
+                          'отображает их менеджеру вместе с предложениями по '
+                          'улучшению ответа',
+                          'Менеджер просматривает предоставленные замечания и '
+                          'предложения по корректировке ответа',
+                          'При необходимости менеджер редактирует свой '
+                          'первоначальный ответ, учитывая полученные '
+                          'рекомендации',
+                          'После внесения изменений менеджер повторно '
+                          'инициирует проверку, нажимая кнопку «Провести '
+                          'повторную проверку»',
+                          'Система повторно анализирует изменённый ответ и '
+                          'подтверждает соответствие всем установленным '
+                          'критериям качества',
+                          'Система уведомляет менеджера об успешном '
+                          'прохождении проверки и готовности ответа к отправке '
+                          'клиенту'],
+                   related_userstory_ids=['2e139'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Начинаю автоматическое формирование рекомендованного сценария.
+BAResponse(ba_text='Достигнут лимит по количеству рекомендуемых сценариев.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Достигнут лимит по количеству рекомендуемых сценариев.
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Формирование и обработка рекомендации завершены.
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+Вы можете, при необходимости удалить или получить рекомендацию сценария.
+{'1109e': Scenario(id='1109e',
+                   statement=None,
+                   title='Проверить Соответствие Отвечающего Стандартам',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер инициирует запуск проверки '
+                          'соответствия введённого ответа стандартам нажатием '
+                          'кнопки «Проверить»',
+                          'Система проводит семантический анализ текста ответа '
+                          'клиента, используя встроенные правила и стандарты '
+                          'коммуникации Банка',
+                          'Если ответ полностью соответствует установленным '
+                          'стандартам, система отображает сообщение об '
+                          'успешном прохождении проверки',
+                          'Если обнаружены несоответствия или нарушения '
+                          'стандартов, система предоставляет детальный отчет с '
+                          'указанием конкретных проблемных мест и '
+                          'рекомендациями по их исправлению',
+                          'Клиентский менеджер просматривает предоставленный '
+                          'отчет и рекомендации',
+                          'При необходимости клиентский менеджер редактирует '
+                          'свой ответ согласно предложенным рекомендациям и '
+                          'повторяет шаги 1–7 до полного устранения всех '
+                          'выявленных нарушений'],
+                   related_userstory_ids=['2e139']),
+ '26825': Scenario(id='26825',
+                   statement=None,
+                   title='Проверить Корректность Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Проверьте мой '
+                          'ответ»',
+                          'Система сравнивает предоставленный ответ с '
+                          'внутренними стандартами и правилами коммуникации '
+                          'Банка',
+                          'Если ответ корректен, система отображает сообщение '
+                          '«Ваш ответ соответствует всем стандартам и правилам '
+                          'Банка» и предлагает отправить его клиенту',
+                          'Если ответ некорректен или требует доработки, '
+                          'система предоставляет рекомендации по улучшению '
+                          'ответа и указывает на возможные ошибки или '
+                          'несоответствия',
+                          'Клиентский менеджер просматривает полученные '
+                          'рекомендации и при необходимости редактирует свой '
+                          'ответ',
+                          'После внесения изменений клиентский менеджер '
+                          'повторно нажимает кнопку «Проверьте мой ответ», '
+                          'если требуется повторная проверка',
+                          'Система подтверждает окончательную корректность '
+                          'ответа после всех внесённых исправлений',
+                          'Клиентский менеджер отправляет финальный вариант '
+                          'ответа клиенту через свою рабочую среду'],
+                   related_userstory_ids=['2e139']),
+ 'cd5e7': Scenario(id='cd5e7',
+                   statement=None,
+                   title='Проверить Качество Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Провести '
+                          'проверку»',
+                          'Система проводит семантический анализ текста '
+                          'ответа, сравнивая его с внутренними стандартами и '
+                          'правилами коммуникации Банка',
+                          'Система выявляет возможные несоответствия или '
+                          'нарушения стандартов качества обслуживания',
+                          'Если найдены ошибки или рекомендации, система '
+                          'отображает их менеджеру вместе с предложениями по '
+                          'улучшению ответа',
+                          'Менеджер просматривает предоставленные замечания и '
+                          'предложения по корректировке ответа',
+                          'При необходимости менеджер редактирует свой '
+                          'первоначальный ответ, учитывая полученные '
+                          'рекомендации',
+                          'После внесения изменений менеджер повторно '
+                          'инициирует проверку, нажимая кнопку «Провести '
+                          'повторную проверку»',
+                          'Система повторно анализирует изменённый ответ и '
+                          'подтверждает соответствие всем установленным '
+                          'критериям качества',
+                          'Система уведомляет менеджера об успешном '
+                          'прохождении проверки и готовности ответа к отправке '
+                          'клиенту'],
+                   related_userstory_ids=['2e139'])}
+UserResponse(user_text=None, signal=<WeakStateSignal.recommend_new: 9>)
+BAResponse(ba_text='Начинаю автоматическое формирование рекомендованного сценария.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Начинаю автоматическое формирование рекомендованного сценария.
+BAResponse(ba_text='Достигнут лимит по количеству рекомендуемых сценариев.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Достигнут лимит по количеству рекомендуемых сценариев.
+BAResponse(ba_text='Формирование и обработка рекомендации завершены.', available_state_signals=[], available_global_signals=[], user_base_answer=None, is_userinput_locked=True)
+Формирование и обработка рекомендации завершены.
+BAResponse(ba_text='Вы можете, при необходимости удалить или получить рекомендацию сценария.', available_state_signals=[SignalInfo(signal=<WeakStateSignal.delete: 7>, shortcut='Удалить сценарий', description=None), SignalInfo(signal=<WeakStateSignal.recommend_new: 9>, shortcut='Получить предложение сценария', description=None)], available_global_signals=[SignalInfo(signal=<WeakGlobalSignal.next_stage: 0>, shortcut='Перейти на следующую стадию', description=None)], user_base_answer=None, is_userinput_locked=True)
+Вы можете, при необходимости удалить или получить рекомендацию сценария.
+{'1109e': Scenario(id='1109e',
+                   statement=None,
+                   title='Проверить Соответствие Отвечающего Стандартам',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер инициирует запуск проверки '
+                          'соответствия введённого ответа стандартам нажатием '
+                          'кнопки «Проверить»',
+                          'Система проводит семантический анализ текста ответа '
+                          'клиента, используя встроенные правила и стандарты '
+                          'коммуникации Банка',
+                          'Если ответ полностью соответствует установленным '
+                          'стандартам, система отображает сообщение об '
+                          'успешном прохождении проверки',
+                          'Если обнаружены несоответствия или нарушения '
+                          'стандартов, система предоставляет детальный отчет с '
+                          'указанием конкретных проблемных мест и '
+                          'рекомендациями по их исправлению',
+                          'Клиентский менеджер просматривает предоставленный '
+                          'отчет и рекомендации',
+                          'При необходимости клиентский менеджер редактирует '
+                          'свой ответ согласно предложенным рекомендациям и '
+                          'повторяет шаги 1–7 до полного устранения всех '
+                          'выявленных нарушений'],
+                   related_userstory_ids=['2e139']),
+ '26825': Scenario(id='26825',
+                   statement=None,
+                   title='Проверить Корректность Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Проверьте мой '
+                          'ответ»',
+                          'Система сравнивает предоставленный ответ с '
+                          'внутренними стандартами и правилами коммуникации '
+                          'Банка',
+                          'Если ответ корректен, система отображает сообщение '
+                          '«Ваш ответ соответствует всем стандартам и правилам '
+                          'Банка» и предлагает отправить его клиенту',
+                          'Если ответ некорректен или требует доработки, '
+                          'система предоставляет рекомендации по улучшению '
+                          'ответа и указывает на возможные ошибки или '
+                          'несоответствия',
+                          'Клиентский менеджер просматривает полученные '
+                          'рекомендации и при необходимости редактирует свой '
+                          'ответ',
+                          'После внесения изменений клиентский менеджер '
+                          'повторно нажимает кнопку «Проверьте мой ответ», '
+                          'если требуется повторная проверка',
+                          'Система подтверждает окончательную корректность '
+                          'ответа после всех внесённых исправлений',
+                          'Клиентский менеджер отправляет финальный вариант '
+                          'ответа клиенту через свою рабочую среду'],
+                   related_userstory_ids=['2e139']),
+ 'cd5e7': Scenario(id='cd5e7',
+                   statement=None,
+                   title='Проверить Качество Ответа',
+                   steps=['Система принимает введенный текст и начинает '
+                          'процесс его анализа',
+                          'Клиентский менеджер нажимает кнопку «Провести '
+                          'проверку»',
+                          'Система проводит семантический анализ текста '
+                          'ответа, сравнивая его с внутренними стандартами и '
+                          'правилами коммуникации Банка',
+                          'Система выявляет возможные несоответствия или '
+                          'нарушения стандартов качества обслуживания',
+                          'Если найдены ошибки или рекомендации, система '
+                          'отображает их менеджеру вместе с предложениями по '
+                          'улучшению ответа',
+                          'Менеджер просматривает предоставленные замечания и '
+                          'предложения по корректировке ответа',
+                          'При необходимости менеджер редактирует свой '
+                          'первоначальный ответ, учитывая полученные '
+                          'рекомендации',
+                          'После внесения изменений менеджер повторно '
+                          'инициирует проверку, нажимая кнопку «Провести '
+                          'повторную проверку»',
+                          'Система повторно анализирует изменённый ответ и '
+                          'подтверждает соответствие всем установленным '
+                          'критериям качества',
+                          'Система уведомляет менеджера об успешном '
+                          'прохождении проверки и готовности ответа к отправке '
+                          'клиенту'],
+                   related_userstory_ids=['2e139'])}

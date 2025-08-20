@@ -1,0 +1,1 @@
+from .RolesCommunicator import RolesCommunicator, RolesCommunicatorConfig

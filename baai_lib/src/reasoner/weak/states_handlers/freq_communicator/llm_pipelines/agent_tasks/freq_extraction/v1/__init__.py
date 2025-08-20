@@ -1,0 +1,1 @@
+from .suite import FREQEXTR_SUITE_V1

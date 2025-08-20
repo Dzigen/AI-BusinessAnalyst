@@ -1,0 +1,1 @@
+from .suite import FRESTRGEN_SUITE_V1

@@ -1,0 +1,1 @@
+from .suite import INTGRSUMM_SUITE_V1

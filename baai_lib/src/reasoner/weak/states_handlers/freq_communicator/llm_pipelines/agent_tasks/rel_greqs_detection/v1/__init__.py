@@ -1,0 +1,1 @@
+from .suite import RELGFRDETECT_SUITE_V1

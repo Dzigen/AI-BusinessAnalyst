@@ -1,0 +1,1 @@
+from .suite import BFRGGEN_SUITE_V1

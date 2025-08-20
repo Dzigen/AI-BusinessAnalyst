@@ -1,0 +1,1 @@
+from .ReqSpecificationModel import ReqSpecificationModel, ReqSpecificationModelConfig

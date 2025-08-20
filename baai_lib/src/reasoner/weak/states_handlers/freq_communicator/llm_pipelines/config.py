@@ -1,0 +1,19 @@
+from .agent_tasks.freq_extraction import AgentFuncReqExtrConfigSelector
+from .agent_tasks.base_rgroups_gen import AgentBaseFRGroupsGenConfigSelector
+from .agent_tasks.sum_rgroups_gen import AgentSummFRGroupsGenConfigSelector
+from .agent_tasks.rel_greqs_detection import AgentRelevantFuncReqGroupsDetectionConfigSelector
+from .agent_tasks.rel_greqs_extraction import AgentRelevantFuncReqGroupsExtractionionConfigSelector
+from .agent_tasks.greqs_reformilation import AgentFuncReqGroupReformConfigSelector
+
+FREQ_LOG_PATH = "log/reasoner/weak/freq_communicator/llm_pipelines/freq_extractor"
+
+DEFAULT_FREQEXTRACT_TASK_CONFIG = AgentFuncReqExtrConfigSelector.select(base_config_version='v1')
+
+DEFAULT_BASEFREQGGEN_TASK_CONFIG = AgentBaseFRGroupsGenConfigSelector.select(base_config_version='v1')
+DEFAULT_SUMFREQGGEN_TASK_CONFIG = AgentSummFRGroupsGenConfigSelector.select(base_config_version='v1')
+
+DEFAULT_RELFREQGEXTRACT_TASK_CONFIG = AgentRelevantFuncReqGroupsExtractionionConfigSelector.select(base_config_version='v1')
+DEFAULT_RELFREQGDETECT_TASK_CONFIG = AgentRelevantFuncReqGroupsDetectionConfigSelector.select(base_config_version='v1')
+
+DEFAULT_FREQGREFORM_TASK_CONFIG = AgentFuncReqGroupReformConfigSelector.select(base_config_version='v1')
+
